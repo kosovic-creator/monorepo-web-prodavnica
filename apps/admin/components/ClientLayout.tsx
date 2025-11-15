@@ -1,4 +1,5 @@
 'use client';
+import { SessionProvider } from "next-auth/react";
 import NavbarAdmin from "../components/NavbarAdmin";
 
 
@@ -11,9 +12,11 @@ export default function RootLayout({
   return (
     <html lang="sr">
       <body>
+        <SessionProvider>
         <NavbarAdmin />
         {children}
-        </body>
+        </SessionProvider>
+      </body>
     </html>
   );
 }

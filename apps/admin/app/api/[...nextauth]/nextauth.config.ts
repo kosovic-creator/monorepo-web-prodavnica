@@ -51,14 +51,28 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         const result = loginSchema.safeParse(credentials);
-        if (!result.success) return null;
+          if (!result.success) {
+              console.error("[NextAuth] Nevalidni podaci:", credentials, result.error);
+              return null;
+          }
         const { email, lozinka } = result.data;
         const korisnik = await prisma.korisnik.findUnique({
           where: { email },
         });
-        if (!korisnik || !korisnik.lozinka) return null;
+          if (!korisnik) {
+              console.error("[NextAuth] Korisnik nije pronađen:", email);
+              return null;
+          }
+          if (!korisnik.lozinka) {
+              console.error("[NextAuth] Korisnik nema lozinku:", email);
+              return null;
+          }
         const valid = await bcrypt.compare(lozinka, korisnik.lozinka);
-        if (!valid) return null;
+          if (!valid) {
+              console.error("[NextAuth] Pogrešna lozinka za:", email);
+              return null;
+          }
+          console.log("[NextAuth] Prijava uspješna za:", email);
         return {
           id: String(korisnik.id),
           email: korisnik.email,
