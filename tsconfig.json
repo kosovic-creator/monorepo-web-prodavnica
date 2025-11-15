@@ -3,12 +3,23 @@
   "references": [
     { "path": "./apps/client" },
     { "path": "./apps/admin" },
-    { "path": "./packages/actions" }
+    { "path": "./packages/auth" }
   ],
   "compilerOptions": {
     "baseUrl": ".",
+    "moduleResolution": "nodenext",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "paths": {
-      "@actions/*": ["packages/actions/*"]
-    }
+      "@actions/*": ["packages/actions/*"],
+      "@auth/*": ["packages/auth/*"],
+      "@auth/auth/*": ["packages/auth/dist/auth/*"],
+      "@/*": ["*"]      // mapira `@/neki/fajl` na `./neki/fajl`
+    },
+    "target": "ES2017",
+    "module": "NodeNext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "types": ["node", "react", "react-dom"]
+    ,"skipLibCheck": true
   }
 }

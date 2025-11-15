@@ -2,7 +2,8 @@
   "compilerOptions": {
     "baseUrl": "../../",
     "paths": {
-      "@actions/*": ["packages/actions/*"]
+      "@actions/*": ["packages/actions/*"],
+      "@auth/auth/*": ["../../packages/auth/dist/auth/*"]
     },
     "lib": [
       "dom",
@@ -33,6 +34,7 @@
     "**/*.tsx"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "app/[...nextauth]/route.ts"
   ]
 }

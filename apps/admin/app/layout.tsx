@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import ClientLayout from "../components/ClientLayout";
 
 export const metadata: Metadata = {
   title: "Admin panel",
@@ -12,8 +13,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="sr">
-      <body>{children}</body>
-    </html>
+
+      <body>
+        <ClientLayout>
+        {children}
+        </ClientLayout>
+      </body>
+
   );
 }

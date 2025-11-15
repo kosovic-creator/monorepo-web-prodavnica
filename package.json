@@ -7,7 +7,9 @@
   ],
   "devDependencies": {
     "prisma": "^6.19.0",
-    "turbo": "^1.13.0"
+    "turbo": "^1.13.0",
+     "bcryptjs": "^3.0.3",
+    "next-auth": "^4.24.13"
   },
   "scripts": {
     "dev": "turbo run dev --parallel",
