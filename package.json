@@ -6,10 +6,13 @@
     "packages/*"
   ],
   "devDependencies": {
+    "autoprefixer": "^10.4.22",
+    "bcryptjs": "^3.0.3",
+    "next-auth": "^4.24.13",
+    "postcss": "^8.5.6",
     "prisma": "^6.19.0",
-    "turbo": "^1.13.0",
-     "bcryptjs": "^3.0.3",
-    "next-auth": "^4.24.13"
+    "tailwindcss": "^4.1.17",
+    "turbo": "^1.13.0"
   },
   "scripts": {
     "dev": "turbo run dev --parallel",
@@ -21,8 +24,8 @@
     "build:client": "cd apps/client && prisma generate --schema=../../prisma/schema.prisma && next build",
     "build:admin": "cd apps/admin && prisma generate --schema=../../prisma/schema.prisma && next build"
   },
-"dependencies": {
+  "dependencies": {
     "@prisma/client": "^6.19.0",
-     "bcryptjs": "^3.0.2"
+    "bcryptjs": "^3.0.2"
   }
 }
