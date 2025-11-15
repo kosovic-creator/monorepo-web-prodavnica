@@ -1,0 +1,14 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./apps/client" },
+    { "path": "./apps/admin" },
+    { "path": "./packages/actions" }
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@actions/*": ["packages/actions/*"]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "monorepo-web-prodavnica",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "prisma": "^6.19.0",
+    "turbo": "^1.13.0"
+  },
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "prisma:generate": "prisma generate --schema=packages/prisma/schema.prisma",
+    "prisma:migrate": "prisma migrate dev  --schema=packages/prisma/schema.prisma",
+    "link:prisma": "sh ./link-prisma.sh",
+    "build:client": "cd apps/client && prisma generate --schema=../../prisma/schema.prisma && next build",
+    "build:admin": "cd apps/admin && prisma generate --schema=../../prisma/schema.prisma && next build"
+  },
+"dependencies": {
+    "@prisma/client": "^6.19.0",
+     "bcryptjs": "^3.0.2"
+  }
+}
