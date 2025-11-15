@@ -9,7 +9,8 @@ export default async function KorisniciAdmin() {
     if (!podaci.success) {
         return <div>Greška: {podaci.error || "Nepoznata greška"}</div>;
     }
-    return (
-        <AdminClient korisnici={podaci.data.korisnici} />
-    );
+    if (!podaci.data) {
+        return <div>Nema podataka o korisnicima.</div>;
+    }
+    return <AdminClient korisnici={podaci.data.korisnici} />;
 }

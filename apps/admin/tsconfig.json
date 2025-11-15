@@ -2,8 +2,12 @@
   "compilerOptions": {
     "baseUrl": "../../",
     "paths": {
-      "@actions/*": ["packages/actions/*"],
-      "@auth/auth/*": ["../../packages/auth/dist/auth/*"]
+      "@actions/*": [
+        "packages/actions/*"
+      ],
+      "@auth/auth/*": [
+        "../../packages/auth/dist/auth/*"
+      ]
     },
     "lib": [
       "dom",
@@ -25,11 +29,13 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "strictNullChecks": true
   },
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
+    "../../types/next-auth.d.ts",
     "**/*.ts",
     "**/*.tsx"
   ],
