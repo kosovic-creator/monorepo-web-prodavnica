@@ -1,5 +1,10 @@
 // Dohvati samo osnovne podatke iz tabele Korisnik (bez podaciPreuzimanja)
 'use server';
+
+import { prisma } from '../../prisma/client';
+import { revalidatePath } from 'next/cache';
+import bcrypt from 'bcryptjs';
+
 export async function getKorisniciBasic(page: number = 1, pageSize: number = 10) {
   try {
     const skip = (page - 1) * pageSize;
@@ -25,9 +30,6 @@ export async function getKorisniciBasic(page: number = 1, pageSize: number = 10)
   }
 }
 
-import { prisma } from '../../prisma/client';
-import { revalidatePath } from 'next/cache';
-import bcrypt from 'bcryptjs';
 
 export type KorisnikData = {
   email: string;
