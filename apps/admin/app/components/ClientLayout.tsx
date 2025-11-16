@@ -1,6 +1,6 @@
 'use client';
 import { SessionProvider } from "next-auth/react";
-import NavbarAdmin from "../components/NavbarAdmin";
+import NavbarAdmin from "./NavbarAdmin";
 
 
 

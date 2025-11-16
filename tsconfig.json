@@ -14,7 +14,11 @@
       "@actions/*": ["packages/actions/*"],
       "@auth/*": ["packages/auth/*"],
       "@auth/auth/*": ["packages/auth/dist/auth/*"],
-      "@/*": ["*"]      // mapira `@/neki/fajl` na `./neki/fajl`
+
+
+      "@/*": ["*"],     // mapira `@/neki/fajl` na `./neki/fajl`
+      "@schemas": ["./zod-schemas.ts"],
+
     },
     "target": "ES2017",
     "module": "NodeNext",

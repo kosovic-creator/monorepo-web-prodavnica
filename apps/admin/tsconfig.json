@@ -5,8 +5,12 @@
       "@actions/*": [
         "packages/actions/*"
       ],
+        "@components/*": ["app/components/*"],
       "@auth/auth/*": [
         "../../packages/auth/dist/auth/*"
+      ],
+      "@schemas": [
+        "./zod-schemas.ts"
       ]
     },
     "lib": [
