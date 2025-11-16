@@ -1,22 +1,23 @@
 'use client';
-import { SessionProvider } from "next-auth/react";
-import NavbarAdmin from "./NavbarAdmin";
+import { SessionProvider, useSession } from "next-auth/react";
+import AdminNavbar from "./AdminNavbar";
 
 
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+
+function AdminNavbarWithSession() {
+  const { data: session, status } = useSession();
+  return <AdminNavbar session={session ?? undefined} status={status} />;
+}
+
+export default function ClientLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="sr">
-      <body>
-        <SessionProvider>
-        <NavbarAdmin />
-        {children}
-        </SessionProvider>
-      </body>
-    </html>
+    <SessionProvider>
+      <AdminNavbarWithSession />
+      {children}
+    </SessionProvider>
   );
 }
