@@ -12,14 +12,13 @@
     "allowSyntheticDefaultImports": true,
     "paths": {
       "@actions/*": ["packages/actions/*"],
-       "@cloudinary": ["packages/cloudinary.ts"],
       "@auth/*": ["packages/auth/*"],
       "@auth/auth/*": ["packages/auth/dist/auth/*"],
 
 
       "@/*": ["*"],     // mapira `@/neki/fajl` na `./neki/fajl`
       "@schemas": ["./zod-schemas.ts"],
-
+      "@cloudinary": ["packages/cloudinary.ts"]
     },
     "target": "ES2017",
     "module": "NodeNext",

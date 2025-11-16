@@ -139,7 +139,7 @@ function DodajProizvodPage() {
 
                 if (result.success) {
                     toast.success('Proizvod je uspešno dodat!');
-                    router.push('/admin/proizvodi');
+                    router.push('/proizvodi');
                 } else {
                     setError(result.error || 'Greška pri kreiranju proizvoda!');
                     toast.error(result.error || 'Greška pri kreiranju proizvoda!');

@@ -5,13 +5,14 @@
       "@actions/*": [
         "packages/actions/*"
       ],
-        "@components/*": ["app/components/*"],
+      "@components/*": ["app/components/*"],
       "@auth/auth/*": [
         "../../packages/auth/dist/auth/*"
       ],
       "@schemas": [
         "./zod-schemas.ts"
-      ]
+      ],
+      "@cloudinary": ["packages/cloudinary.ts"]
     },
     "lib": [
       "dom",
