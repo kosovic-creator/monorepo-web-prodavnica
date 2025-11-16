@@ -253,7 +253,7 @@ export default function DodajProizvodModalClient() {
           <div className="pt-4 border-t border-gray-200">
             <button
               type="button"
-              onClick={() => router.push('/admin/proizvodi/dodaj')}
+              onClick={() => router.push('/proizvodi/dodaj')}
               className="text-blue-600 hover:text-blue-700 text-sm font-medium"
             >
               Otvori kompletan form za dodavanje →
