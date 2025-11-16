@@ -4,11 +4,10 @@
 import React, { useEffect, useState, Suspense, useTransition } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { noviProizvodSchemaStatic } from'@schemas';
-// import ImageUpload from '@/components/ImageUpload';
 import { FaSave, FaTimes } from 'react-icons/fa';
-
 import { getProizvodById, updateProizvod } from '@actions/proizvodi';
 import { toast } from 'react-hot-toast';
+import ImageUpload from 'apps/admin/app/components/ImageUpload';
 export type Proizvod = {
   id: string;
   // API polja
@@ -340,12 +339,12 @@ function IzmeniProizvodContent() {
                 </button>
               </div>
             ))}
-            {/* <ImageUpload
+            <ImageUpload
               currentImage={''}
               onImageChange={handleImageAdd}
               onImageRemove={() => { }}
               productId={id}
-            /> */}
+            />
           </div>
           <div className="text-sm text-gray-500">Možete dodati više slika. Prva slika će biti glavna.</div>
         </div>

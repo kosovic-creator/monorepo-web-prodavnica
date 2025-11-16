@@ -2,4 +2,5 @@
 
   export * from './korisnici';
   export * from './proizvodi';
+  export * from './porudzbine';
 

@@ -2,7 +2,6 @@
 
 import React, { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
-// import ImageUpload from '@/components/ImageUpload';
 import { FaPlus, FaTimes } from 'react-icons/fa';
 
 import { ZodError } from 'zod';
@@ -12,6 +11,7 @@ import Image from 'next/image';
 // Import the schema for product validation
 // Update the import path if the file is located elsewhere, e.g.:
 import { noviProizvodSchemaStatic } from '@schemas';
+import ImageUpload from '../../components/ImageUpload';
 // Or, if the file does not exist, create it at the correct path.
 
 function DodajProizvodPage() {
@@ -83,7 +83,7 @@ function DodajProizvodPage() {
         setError(null);
         setValidationErrors({});
         // Vrati se na admin stranicu
-        router.push('/admin/proizvodi');
+        router.push('/proizvodi');
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -367,12 +367,12 @@ function DodajProizvodPage() {
                                 </button>
                             </div>
                         ))}
-                        {/* <ImageUpload
+                        <ImageUpload
                             currentImage={''}
                             onImageChange={handleImageAdd}
                             onImageRemove={() => { }}
                             productId={`new-${Date.now()}`}
-                        /> */}
+                        />
                     </div>
                     <div className="text-sm text-gray-500">Možete dodati više slika. Prva slika će biti glavna.</div>
                 </div>

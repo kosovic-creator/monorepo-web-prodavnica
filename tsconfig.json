@@ -12,6 +12,7 @@
     "allowSyntheticDefaultImports": true,
     "paths": {
       "@actions/*": ["packages/actions/*"],
+       "@cloudinary": ["packages/cloudinary.ts"],
       "@auth/*": ["packages/auth/*"],
       "@auth/auth/*": ["packages/auth/dist/auth/*"],
 
