@@ -1,26 +1,7 @@
 import { getKorisnici } from "@actions/korisnici";
 import DeleteButton from './DeleteButton';
 import { Suspense } from 'react';
-
-interface Korisnik {
-  id: string;
-  ime: string;
-  prezime: string;
-  email: string;
-  uloga: string;
-  kreiran: Date;
-  podaciPreuzimanja: {
-    id: string;
-    korisnikId: string;
-    kreiran: Date;
-    azuriran: Date;
-    adresa: string;
-    grad: string;
-    drzava: string;
-    telefon: string;
-    postanskiBroj: number;
-  } | null;
-};
+import {  Korisnik } from "@types";
 
 async function KorisniciTable({ page = 1, pageSize = 10 }: { page?: number, pageSize?: number }) {
   const result = await getKorisnici(page, pageSize);

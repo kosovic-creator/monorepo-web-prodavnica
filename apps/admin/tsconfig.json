@@ -10,9 +10,10 @@
         "../../packages/auth/dist/auth/*"
       ],
       "@schemas": [
-        "./zod-schemas.ts"
+        "packages/schemas/zod-schemas.ts"
       ],
-      "@cloudinary": ["packages/cloudinary.ts"]
+      "@cloudinary": ["packages/cloudinary.ts"],
+      "@types": ["packages/types/type.ts"]
     },
     "lib": [
       "dom",

@@ -3,7 +3,10 @@
     "baseUrl": "../../",
     "paths": {
       "@actions/*": ["packages/actions/*"],
-      "@auth/auth/*": ["../../packages/auth/dist/auth/*"]
+      "@auth/auth/*": ["../../packages/auth/dist/auth/*"],
+      "@schemas": ["packages/schemas/zod-schemas.ts"],
+      "@cloudinary": ["packages/cloudinary.ts"],
+      "@types": ["packages/types/type.ts"]
     },
     "lib": [
       "dom",

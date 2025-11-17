@@ -7,7 +7,7 @@
 [2mPrisma schema loaded from ../../prisma/schema.prisma[22m
 
 
-✔ Generated [1mPrisma Client[22m (v6.19.0)[2m to ./../../node_modules/@prisma/client[22m in 250ms
+✔ Generated [1mPrisma Client[22m (v6.19.0)[2m to ./../../node_modules/@prisma/client[22m in 425ms
 
 Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
 
@@ -17,40 +17,51 @@ Tip: Want to turn off tips and other hints? https://pris.ly/tip-4-nohints
   - Environments: .env
 
  [37m[1m [22m[39m Creating an optimized production build ...
-Failed to compile.
+ [32m[1m✓[22m[39m Compiled successfully
+[?25l [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G[?25h [37m[1m [22m[39m Linting and checking validity of types     [32m[1m✓[22m[39m Linting and checking validity of types 
+[?25l [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m...[39m[2K[1G[?25h [37m[1m [22m[39m Collecting page data     [32m[1m✓[22m[39m Collecting page data 
+[?25l [37m[1m [22m[39m Generating static pages (0/16)  [36m[    ][39m[2K[1G [37m[1m [22m[39m Generating static pages (5/16)  [36m[=   ][39m[2K[1G [37m[1m [22m[39m Generating static pages (6/16)  [36m[==  ][39m[2K[1G [37m[1m [22m[39m Generating static pages (15/16)  [36m[=== ][39m[2K[1G[?25h [32m[1m✓[22m[39m Generating static pages (16/16)
+[?25l [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[?25l [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G[?25h [37m[1m [22m[39m Collecting build traces     [32m[1m✓[22m[39m Collecting build traces 
+[2K[1G[?25h [37m[1m [22m[39m Finalizing page optimization     [32m[1m✓[22m[39m Finalizing page optimization 
 
-./app/proizvodi/(.)dodaj/DodajProizvodModalClient.tsx
-Module not found: Can't resolve '@/components/ImageUpload'
+[4mRoute (app)[24m                               [4mSize[24m     [4mFirst Load JS[24m
+┌ ○ /                                     141 B          [37m[1m87.4 kB[22m[39m
+├ ○ /_not-found                           876 B          [37m[1m88.2 kB[22m[39m
+├ ƒ /api/korisnici                        0 B                [37m[1m0 B[22m[39m
+├ ƒ /api/korisnici/[id]                   0 B                [37m[1m0 B[22m[39m
+├ ƒ /api/porudzbine                       0 B                [37m[1m0 B[22m[39m
+├ ƒ /api/porudzbine/[id]                  0 B                [37m[1m0 B[22m[39m
+├ ƒ /api/proizvodi                        0 B                [37m[1m0 B[22m[39m
+├ ƒ /api/proizvodi/[id]                   0 B                [37m[1m0 B[22m[39m
+├ ƒ /api/proizvodi/slika                  0 B                [37m[1m0 B[22m[39m
+├ ƒ /api/proizvodi/update-stanje          0 B                [37m[1m0 B[22m[39m
+├ ○ /auth/prijava                         716 B          [37m[1m97.8 kB[22m[39m
+├ ƒ /auth/registracija                    5.35 kB         [37m[1m104 kB[22m[39m
+├ ○ /korisnici                            1.45 kB        [37m[1m93.8 kB[22m[39m
+├ ƒ /korisnici/(.)dodaj                   3.12 kB         [37m[1m102 kB[22m[39m
+├ ○ /korisnici/dodaj                      3.13 kB         [37m[1m102 kB[22m[39m
+├ ○ /porudzbine                           2.97 kB        [37m[1m95.3 kB[22m[39m
+├ ○ /proizvodi                            1.79 kB        [37m[1m94.1 kB[22m[39m
+├ ƒ /proizvodi/(.)dodaj                   3.94 kB         [37m[1m108 kB[22m[39m
+├ ƒ /proizvodi/[id]                       141 B          [37m[1m87.4 kB[22m[39m
+├ ƒ /proizvodi/[id]/historija             3.33 kB         [37m[1m102 kB[22m[39m
+├ ƒ /proizvodi/[id]/pregled               2.42 kB         [37m[1m116 kB[22m[39m
+├ ƒ /proizvodi/[id]/statistike            3.84 kB         [37m[1m102 kB[22m[39m
+├ ○ /proizvodi/dodaj                      4.52 kB         [37m[1m123 kB[22m[39m
+└ ƒ /proizvodi/izmeni/[id]                4.46 kB         [37m[1m123 kB[22m[39m
++ First Load JS shared by all             [37m[1m87.3 kB[22m[39m
+  ├ chunks/1dd3208c-2d3017a3dcd15267.js   53.7 kB
+  ├ chunks/528-cb6115a0f2e13579.js        31.7 kB
+  └ other shared chunks (total)           1.94 kB
 
-https://nextjs.org/docs/messages/module-not-found
+[4mRoute (pages)[24m                             [4mSize[24m     [4mFirst Load JS[24m
+─ ƒ /api/auth/[...nextauth]               0 B            [37m[1m85.5 kB[22m[39m
++ First Load JS shared by all             [37m[1m85.5 kB[22m[39m
+  ├ chunks/framework-9e68550641db712d.js  44.9 kB
+  ├ chunks/main-7b8fa360a4d25e3d.js       38.6 kB
+  └ other shared chunks (total)           1.92 kB
 
-./app/proizvodi/[id]/historija/HistorijaProizvodaClient.tsx
-Module not found: Can't resolve '@/lib/actions/proizvodi'
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
 
-https://nextjs.org/docs/messages/module-not-found
-
-./app/proizvodi/[id]/pregled/PregledProizvodaClient.tsx
-Module not found: Can't resolve '@/lib/actions/proizvodi'
-
-https://nextjs.org/docs/messages/module-not-found
-
-./app/proizvodi/[id]/statistike/StatistikeProizvodaClient.tsx
-Module not found: Can't resolve '@/lib/actions/proizvodi'
-
-https://nextjs.org/docs/messages/module-not-found
-
-./app/proizvodi/izmeni/[id]/page.tsx
-Module not found: Can't resolve '@/zod'
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-> Build failed because of webpack errors
-⠙[1G[0K[1mnpm[22m [31merror[39m Lifecycle script `build` failed with error:
-⠙[1G[0K[1mnpm[22m [31merror[39m [94mcode[39m [33m1[39m
-⠙[1G[0K[1mnpm[22m [31merror[39m [94mpath[39m /Users/drasko/monorepo-web-prodavnica/apps/admin
-⠙[1G[0K[1mnpm[22m [31merror[39m [94mworkspace[39m admin@0.1.0
-⠙[1G[0K[1mnpm[22m [31merror[39m [94mlocation[39m /Users/drasko/monorepo-web-prodavnica/apps/admin
-⠙[1G[0K[1mnpm[22m [31merror[39m command failed
-⠙[1G[0K[1mnpm[22m [31merror[39m [94mcommand[39m sh -c prisma generate --schema=../../prisma/schema.prisma && next build
-⠙[1G[0K
+[?25h⠙[1G[0K

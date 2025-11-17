@@ -1,5 +1,5 @@
 'use client';
-import '../../../i18n/config';
+import '../../../../client/i18n/config';
 import { signIn } from "next-auth/react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
