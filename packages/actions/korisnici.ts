@@ -64,8 +64,7 @@ export async function getKorisnici(page: number = 1, pageSize: number = 10) {
       prisma.korisnik.findMany({
         skip,
         take: pageSize,
-        orderBy: { kreiran: 'desc' },
-        include: { podaciPreuzimanja: true }
+        orderBy: { kreiran: 'desc' }
       }),
       prisma.korisnik.count()
     ]);
@@ -86,8 +85,7 @@ export async function getKorisnici(page: number = 1, pageSize: number = 10) {
 export async function getKorisnikById(id: number) {
   try {
     const korisnik = await prisma.korisnik.findUnique({
-      where: { id },
-      include: { podaciPreuzimanja: true }
+      where: { id }
     });
 
     if (!korisnik) {
