@@ -9,3 +9,5 @@ dist
 .vercel
 
 /generated/prisma
+*.tar.zst
+*.pack
