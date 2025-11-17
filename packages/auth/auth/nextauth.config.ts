@@ -3,9 +3,11 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 
+
 import * as bcrypt from "bcryptjs";
 import { z } from "zod";
 import { PrismaClient } from "@prisma/client";
+import type { CustomUser, CustomToken, CustomSessionUser } from "../types/nextauth-custom";
 
 const prisma = new PrismaClient();
 
@@ -13,31 +15,6 @@ const loginSchema = z.object({
   email: z.email(),
   lozinka: z.string().min(6),
 });
-
-interface CustomUser {
-  id: string;
-  email: string;
-  uloga?: string;
-  ime?: string;
-  prezime?: string;
-}
-
-interface CustomToken {
-  id?: string;
-  email?: string;
-  uloga?: string;
-  ime?: string;
-  prezime?: string;
-  [key: string]: unknown;
-}
-
-interface CustomSessionUser {
-  id?: string;
-  email?: string;
-  uloga?: string;
-  ime?: string;
-  prezime?: string;
-}
 
 export const authOptions: NextAuthOptions = {
   providers: [

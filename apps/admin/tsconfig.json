@@ -6,6 +6,7 @@
         "packages/actions/*"
       ],
       "@components/*": ["app/components/*"],
+      "@auth/*": ["../../packages/auth/*"],
       "@auth/auth/*": [
         "../../packages/auth/dist/auth/*"
       ],
