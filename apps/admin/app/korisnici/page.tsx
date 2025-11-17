@@ -18,17 +18,21 @@ async function KorisniciTable({ page = 1, pageSize = 10 }: { page?: number, page
   const totalPages = Math.ceil(total / pageSize);
 
   // Ensure all ids are strings for type compatibility
-  const korisniciTyped: Korisnik[] = korisnici.map((korisnik: any) => ({
-    ...korisnik,
-    id: String(korisnik.id),
-    podaciPreuzimanja: korisnik.podaciPreuzimanja
+  // Prilagodi mapiranje da podaciPreuzimanja može biti undefined/null
+  const korisniciTyped: Korisnik[] = korisnici.map((korisnik: any) => {
+    const podaci = korisnik.podaciPreuzimanja
       ? {
           ...korisnik.podaciPreuzimanja,
           id: String(korisnik.podaciPreuzimanja.id),
           korisnikId: String(korisnik.podaciPreuzimanja.korisnikId),
         }
-      : null,
-  }));
+      : null;
+    return {
+      ...korisnik,
+      id: String(korisnik.id),
+      podaciPreuzimanja: podaci,
+    };
+  });
 
   return (
     <>
@@ -86,21 +90,23 @@ async function KorisniciTable({ page = 1, pageSize = 10 }: { page?: number, page
                       {korisnik.uloga}
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    {korisnik.podaciPreuzimanja ? (
-                      <div>
-                        <div>{korisnik.podaciPreuzimanja.adresa}</div>
-                        <div className="text-xs text-gray-500">
-                          {korisnik.podaciPreuzimanja.grad}, {korisnik.podaciPreuzimanja.drzava}
-                        </div>
-                      </div>
-                    ) : (
-                      <span className="text-gray-400">Nema podataka</span>
-                    )}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    {korisnik.podaciPreuzimanja?.telefon || '-'}
-                  </td>
+                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                     {korisnik.podaciPreuzimanja && korisnik.podaciPreuzimanja.adresa ? (
+                       <div>
+                         <div>{korisnik.podaciPreuzimanja.adresa}</div>
+                         <div className="text-xs text-gray-500">
+                           {korisnik.podaciPreuzimanja.grad}, {korisnik.podaciPreuzimanja.drzava}
+                         </div>
+                       </div>
+                     ) : (
+                       <span className="text-gray-400">Nema podataka</span>
+                     )}
+                   </td>
+                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                     {korisnik.podaciPreuzimanja && korisnik.podaciPreuzimanja.telefon
+                       ? korisnik.podaciPreuzimanja.telefon
+                       : '-'}
+                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {new Date(korisnik.kreiran).toLocaleDateString('sr-RS')}
                   </td>
