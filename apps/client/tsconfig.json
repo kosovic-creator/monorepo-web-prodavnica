@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "baseUrl": "../../",
+    "paths": {
+      "@actions/*": ["packages/actions/*"],
+      "@auth/*": ["../../packages/auth/*"],
+      "@schemas": ["packages/schemas/zod-schemas.ts"],
+      "@cloudinary": ["packages/cloudinary.ts"],
+      "@types": ["packages/types/type.ts"]
+    },
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "plugins": [
+      { "name": "next" }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "app/[...nextauth]/route.ts"
+  ]
+}
