@@ -64,7 +64,10 @@ export async function getKorisnici(page: number = 1, pageSize: number = 10) {
       prisma.korisnik.findMany({
         skip,
         take: pageSize,
-        orderBy: { kreiran: 'desc' }
+        orderBy: { kreiran: 'desc' },
+        include: {
+          podaciPreuzimanja: true
+        }
       }),
       prisma.korisnik.count()
     ]);
