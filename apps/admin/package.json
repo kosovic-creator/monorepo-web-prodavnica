@@ -10,7 +10,7 @@
     "prisma:generate": "prisma generate --schema=../../prisma/schema.prisma"
   },
   "dependencies": {
-    "auth": "workspace:*"
+    "auth": "0.1.0"
   },
   "devDependencies": {
 
