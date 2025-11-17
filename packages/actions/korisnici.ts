@@ -60,6 +60,7 @@ export type RegistracijaData = {
 export async function getKorisnici(page: number = 1, pageSize: number = 10) {
   try {
     const skip = (page - 1) * pageSize;
+
     const [korisnici, total] = await Promise.all([
       prisma.korisnik.findMany({
         skip,
@@ -71,6 +72,9 @@ export async function getKorisnici(page: number = 1, pageSize: number = 10) {
       }),
       prisma.korisnik.count()
     ]);
+
+    // DEBUG: Prikazi korisnike u server logu
+    console.log('SERVER ACTION getKorisnici:', JSON.stringify(korisnici, null, 2));
 
     return {
       success: true,
