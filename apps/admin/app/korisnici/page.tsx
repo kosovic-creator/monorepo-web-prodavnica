@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { getKorisnici } from "@actions/korisnici";
 import DeleteButton from './DeleteButton';
 import { Suspense } from 'react';
