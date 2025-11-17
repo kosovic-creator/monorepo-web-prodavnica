@@ -35,6 +35,7 @@ type Porudzbina = {
 const PorudzbinePage = () => {
   const [porudzbine, setPorudzbine] = useState<Porudzbina[]>([]);
   const [loading, setLoading] = useState(true);
+  const [debugResult, setDebugResult] = useState<any>(null);
   const [isPending, startTransition] = useTransition();
   const [updatingStatus, setUpdatingStatus] = useState<string | null>(null);
 
@@ -43,6 +44,7 @@ const PorudzbinePage = () => {
       setLoading(true);
       try {
         const result = await getPorudzbine();
+        setDebugResult(result);
         if (result.success && result.data) {
           setPorudzbine(
             result.data.porudzbine.map((p: any) => ({
@@ -153,6 +155,16 @@ const PorudzbinePage = () => {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      </div>
+    );
+  }
+
+  // DEBUG: Prikazi raw rezultat iz backenda
+  if (debugResult) {
+    return (
+      <div className="p-4">
+        <h2 className="font-bold mb-2">DEBUG backend rezultat (porudzbine):</h2>
+        <pre className="bg-gray-100 p-2 rounded text-xs overflow-x-auto">{JSON.stringify(debugResult, null, 2)}</pre>
       </div>
     );
   }
