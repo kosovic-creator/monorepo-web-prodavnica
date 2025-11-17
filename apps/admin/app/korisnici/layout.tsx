@@ -14,21 +14,21 @@ export default function KorisniciLayout({
 
   const korisniciMenuItems = [
     {
-      href: '/admin/korisnici',
+      href: '/korisnici',
       label: 'Svi korisnici',
       icon: FaUsers,
       isActive: pathname === '/korisnici'
     },
     {
-      href: '/admin/korisnici/dodaj',
+      href: '/korisnici/dodaj',
       label: 'Dodaj korisnika',
       icon: FaPlus,
-      isActive: pathname === '/admin/korisnici/dodaj'
+      isActive: pathname === '/korisnici/dodaj'
     }
   ];
 
   // Modal overlay logika
-  // const isDodajModal = pathname === '/admin/korisnici/dodaj';
+  // const isDodajModal = pathname === '/korisnici/dodaj';
 
   return (
     <div>
@@ -73,7 +73,7 @@ export default function KorisniciLayout({
           <div className="bg-white rounded-lg shadow-lg p-6 relative min-w-[350px] max-w-full">
             {children}
             <Link
-              href="/admin/korisnici"
+              href="/korisnici"
               className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-xl font-bold"
               aria-label="Zatvori modal"
             >

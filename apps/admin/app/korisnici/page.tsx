@@ -128,7 +128,7 @@ export default async function AdminKorisniciPage() {
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">Upravljanje korisnicima</h1>
         {/* <Link
-          href="/admin/korisnici/dodaj"
+          href="/korisnici/dodaj"
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
         >
           Dodaj Korisnika
