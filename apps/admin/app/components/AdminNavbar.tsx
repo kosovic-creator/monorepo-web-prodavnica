@@ -51,7 +51,7 @@ export default function AdminNavbar({ session, status }: AdminNavbarProps) {
           {/* Left Section - Logo & Title */}
           <div className="flex items-center gap-3">
             <FaUserShield className="text-blue-600 text-2xl" />
-            <Link href="/admin" className="flex items-center gap-2">
+            <Link href="/korisnici" className="flex items-center gap-2">
               <h1 className="text-xl font-bold text-gray-900">Admin Panel</h1>
             </Link>
           </div>
