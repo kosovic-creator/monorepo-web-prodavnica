@@ -11,7 +11,7 @@ Pokretanje i razvoj:
 - Monorepo koristi Turborepo za orkestraciju.
 
 Spremno za deployment na Vercel..
-
+#ddd
 ## Deploy na Vercel (TurboRepo Monorepo)
 
 1. **Project Root**: Podesi root direktorijum na koren projekta (gde su `package.json` i `turbo.json`).
