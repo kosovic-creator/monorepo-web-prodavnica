@@ -1,9 +1,0 @@
-[core]
-	repositoryformatversion = 0
-	filemode = true
-	bare = true
-	ignorecase = true
-	precomposeunicode = true
-[remote "origin"]
-	url = https://github.com/kosovic-creator/monorepo-web-prodavnica-d021793195f94520ed85b7dc48d997a56d1950b9.git
-	fetch = +refs/heads/*:refs/remotes/origin/*
