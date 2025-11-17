@@ -1,5 +1,5 @@
-# Ignore TurboRepo cache
-.turbo/cache/
+# Ignore TurboRepo
+.turbo/
 node_modules
 .next
 out
