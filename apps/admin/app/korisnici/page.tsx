@@ -31,10 +31,6 @@ async function KorisniciTable({ page = 1, pageSize = 10 }: { page?: number, page
     return {
       ...korisnik,
       id: String(korisnik.id),
-      podaciPreuzimanja: podaci,
-    };
-  });
-
   return (
     <>
       {/* DEBUG: Prikazi raw rezultat iz backenda */}
