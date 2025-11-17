@@ -32,9 +32,12 @@ async function KorisniciTable({ page = 1, pageSize = 10 }: { page?: number, page
 
   return (
     <>
-
-
-     {/* Korisnici tabela */}
+      {/* DEBUG: Prikazi raw rezultat iz backenda */}
+      <div className="mb-4">
+        <h2 className="font-bold">DEBUG backend rezultat:</h2>
+        <pre className="bg-gray-100 p-2 rounded text-xs overflow-x-auto">{JSON.stringify(result, null, 2)}</pre>
+      </div>
+      {/* Korisnici tabela */}
       <div className="bg-white rounded-lg shadow overflow-hidden">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
@@ -46,14 +49,6 @@ async function KorisniciTable({ page = 1, pageSize = 10 }: { page?: number, page
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Email
                 </th>
-    // DEBUG: Prikazi raw rezultat iz backenda
-                return (
-                <>
-                  <div>
-                    <h2>DEBUG backend rezultat:</h2>
-                    <pre>{JSON.stringify(result, null, 2)}</pre>
-                  </div>
-                  {/* Korisnici tabela */}
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Uloga
                 </th>
