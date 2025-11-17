@@ -1,5 +1,5 @@
 # Monorepo Web Prodavnica
-#upustvo
+#upustvo novo
 Ovaj monorepo sadrži dvije Next.js aplikacije:
 - `apps/client` – glavna prodavnica
 - `apps/admin` – admin panel
