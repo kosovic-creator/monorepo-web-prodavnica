@@ -45,6 +45,17 @@ export type Korisnik = {
   prezime: string;
   email: string;
   uloga: string;
+  telefon: string;
+  grad: string;
+  postanskiBroj: number;
+  adresa: string;
+  kreiran: Date;
+  azuriran: Date;
+};
+
+export type KorisnikData = {
+  email: string;
+  lozinka: string;
   kreiran: Date;
   podaciPreuzimanja: {
     id: string;
