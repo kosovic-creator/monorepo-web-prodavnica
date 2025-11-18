@@ -16,6 +16,6 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-
+    "prisma": "^6.19.0"
   }
 }
