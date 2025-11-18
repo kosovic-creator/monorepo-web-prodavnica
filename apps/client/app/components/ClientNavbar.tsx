@@ -8,40 +8,40 @@ import { usePathname } from 'next/navigation';
 import type { Session } from 'next-auth';
 
 
-interface AdminNavbarProps {
+interface ClientNavbarProps {
   session?: Session;
   status?: "authenticated" | "unauthenticated" | "loading";
 }
 
-export default function AdminNavbar({ session, status }: AdminNavbarProps) {
+export default function ClientNavbar({ session, status }: ClientNavbarProps) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const adminMenuItems = [
+  const clientMenuItems = [
     {
       href: '/',
       label: 'Dashboard',
       icon: FaHome,
       isActive: pathname === '/'
     },
-    {
-      href: '/korisnici',
-      label: 'Korisnici',
-      icon: FaUsers,
-      isActive: pathname?.startsWith('/korisnici') || false
-    },
+    // {
+    //   href: '/korisnici',
+    //   label: 'Korisnici',
+    //   icon: FaUsers,
+    //   isActive: pathname?.startsWith('/korisnici') || false
+    // },
     {
       href: '/proizvodi',
       label: 'Proizvodi',
       icon: FaBox,
       isActive: pathname?.startsWith('/proizvodi') || false
     },
-    {
-      href: '/porudzbine',
-      label: 'Porudžbine',
-      icon: FaShoppingCart,
-      isActive: pathname?.startsWith('/porudzbine') || false
-    }
+    // {
+    //   href: '/porudzbine',
+    //   label: 'Porudžbine',
+    //   icon: FaShoppingCart,
+    //   isActive: pathname?.startsWith('/porudzbine') || false
+    // }
   ];
 
   return (
@@ -52,13 +52,13 @@ export default function AdminNavbar({ session, status }: AdminNavbarProps) {
           <div className="flex items-center gap-3">
             <FaUserShield className="text-blue-600 text-2xl" />
             <Link href="/korisnici" className="flex items-center gap-2">
-              <h1 className="text-xl font-bold text-gray-900">Admin Panel</h1>
+              <h1 className="text-xl font-bold text-gray-900">Client Panel</h1>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
-            {adminMenuItems.map((item) => {
+            {clientMenuItems.map((item) => {
               const Icon = item.icon;
               return (
                 <Link
@@ -128,7 +128,7 @@ export default function AdminNavbar({ session, status }: AdminNavbarProps) {
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200">
           <div className="px-4 py-3 space-y-1">
-            {adminMenuItems.map((item) => {
+            {clientMenuItems.map((item) => {
               const Icon = item.icon;
               return (
                 <Link

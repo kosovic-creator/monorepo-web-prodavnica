@@ -23,7 +23,7 @@ export type Proizvod = {
 
 // Tip koji odgovara strukturi Server Actions
 export type ProizvodServerAction = {
-  id: string;
+  id: number;
   cena: number;
   slika: string | null;
   kolicina: number;
@@ -40,15 +40,15 @@ export type ProizvodServerAction = {
 }
 
 export type Korisnik = {
-  id: string;
+  id: number;
   ime: string;
   prezime: string;
   email: string;
   uloga: string;
   kreiran: Date;
   podaciPreuzimanja: {
-    id: string;
-    korisnikId: string;
+    id: number;
+    korisnikId: number;
     kreiran: Date;
     azuriran: Date;
     adresa: string;
@@ -60,9 +60,9 @@ export type Korisnik = {
 };
 
 export type StavkaKorpe = {
-  id: string;
-  korisnikId: string;
-  proizvodId: string;
+  id: number;
+  korisnikId: number;
+  proizvodId: number;
   kolicina: number;
   kreiran: Date;
   azuriran: Date;
@@ -70,8 +70,8 @@ export type StavkaKorpe = {
 };
 
 export type Porudzbina = {
-  id: string;
-  korisnikId: string;
+  id: number;
+  korisnikId: number;
   ime: string;
   prezime: string;
   ukupno: number;
@@ -82,7 +82,7 @@ export type Porudzbina = {
   idPlacanja?: string | null;
   stavkePorudzbine?: StavkaPorudzbine[];
   korisnik: {
-    id: string;
+    id: number;
     ime: string | null;
     prezime: string | null;
     email: string;
@@ -90,9 +90,9 @@ export type Porudzbina = {
 };
 
 export type StavkaPorudzbine = {
-  id: string;
-  porudzbinaId: string;
-  proizvodId: string;
+  id: number;
+  porudzbinaId: number;
+  proizvodId: number;
   kolicina: number;
   cena: number;
   slika?: string | null;
@@ -103,20 +103,20 @@ export type StavkaPorudzbine = {
 };
 
 export type Omiljeni = {
-  id: string;
-  korisnikId: string;
-  proizvodId: string;
+  id: number;
+  korisnikId: number;
+  proizvodId: number;
   kreiran: Date;
   proizvod: {
-    id: string;
+    id: number;
     cena: number;
     slika?: string | null;
     kolicina: number;
     kreiran: Date;
     azuriran: Date;
     prevodi: Array<{
-      id: string;
-      proizvodId: string;
+      id: number;
+      proizvodId: number;
       jezik: string;
       naziv: string;
       opis?: string | null;
@@ -127,8 +127,8 @@ export type Omiljeni = {
 };
 
 export type ProizvodTranslation = {
-  id: string;
-  proizvodId: string;
+  id: number;
+  proizvodId: number;
   jezik: string;
   naziv: string;
   opis?: string | null;
