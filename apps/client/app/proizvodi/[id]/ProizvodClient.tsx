@@ -5,10 +5,10 @@ import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { Toaster, toast } from 'react-hot-toast';
 import { FaCartPlus, FaArrowLeft } from 'react-icons/fa';
-import OmiljeniButton from '@/components/OmiljeniButton';
 import Link from 'next/link';
 import Image from 'next/image';
-import { dodajUKorpu, getKorpa } from '@/lib/actions';
+import { dodajUKorpu, getKorpa } from '@actions/korpa';
+import OmiljeniButton from '../../components/OmiljeniButton';
 
 export default function ProizvodClient({ proizvod, lang }: { proizvod: any, lang: string }) {
   const router = useRouter();
@@ -22,8 +22,9 @@ export default function ProizvodClient({ proizvod, lang }: { proizvod: any, lang
   const kategorija = lang === 'en' ? proizvod.kategorija_en : proizvod.kategorija_sr;
 
   const handleDodajUKorpu = async () => {
-    const korisnikId = session?.user?.id;
-    if (!korisnikId) {
+    const korisnikIdStr = session?.user?.id;
+    const korisnikId = korisnikIdStr ? Number(korisnikIdStr) : undefined;
+    if (!korisnikId || isNaN(korisnikId)) {
       toast.error(
         <span>
           Morate biti prijavljeni za dodavanje u korpu!{' '}
@@ -41,7 +42,7 @@ export default function ProizvodClient({ proizvod, lang }: { proizvod: any, lang
           toast.error(result.error || 'Greška pri dodavanju u korpu');
           return;
         }
-        const korpaResult = await getKorpa(korisnikId);
+        const korpaResult = await getKorpa(korisnikId.toString());
         if (korpaResult.success && korpaResult.data) {
           const broj = korpaResult.data.stavke.reduce((acc: number, s: { kolicina: number }) => acc + s.kolicina, 0);
           localStorage.setItem('brojUKorpi', broj.toString());

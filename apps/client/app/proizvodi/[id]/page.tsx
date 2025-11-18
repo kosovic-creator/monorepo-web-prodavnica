@@ -1,6 +1,7 @@
-import { getProizvodById } from '@/lib/actions';
+
 import { notFound } from 'next/navigation';
 import ProizvodClient from './ProizvodClient';
+import { getProizvodById } from '@actions/proizvodi';
 
 // This is a hybrid server/client page
 export default async function ProizvodPage({ params, searchParams }: { params: Promise<{ id: string }>, searchParams: Promise<{ lang?: string }> }) {

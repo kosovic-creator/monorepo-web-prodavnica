@@ -4,4 +4,5 @@
   export * from './proizvodi';
   export * from './porudzbine';
   export * from './korpa';
+  export * from './omiljeni';
 
