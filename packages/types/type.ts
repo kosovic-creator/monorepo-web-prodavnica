@@ -40,15 +40,15 @@ export type ProizvodServerAction = {
 }
 
 export type Korisnik = {
-  id: number;
+  id: string;
   ime: string;
   prezime: string;
   email: string;
   uloga: string;
   kreiran: Date;
   podaciPreuzimanja: {
-    id: number;
-    korisnikId: number;
+    id: string;
+    korisnikId: string;
     kreiran: Date;
     azuriran: Date;
     adresa: string;
