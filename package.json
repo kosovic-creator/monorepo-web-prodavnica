@@ -20,7 +20,7 @@
   },
   "scripts": {
     "dev": "turbo run dev --parallel",
-    "build": "tsc -p tsconfig.json",
+    "build": "npm run build -w packages/auth && turbo run build",
     "lint": "turbo run lint",
     "prisma:generate": "prisma generate --schema=prisma/schema.prisma",
     "prisma:migrate": "prisma migrate dev --schema=prisma/schema.prisma",
