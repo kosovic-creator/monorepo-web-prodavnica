@@ -146,7 +146,7 @@ export async function createProizvod(data: ProizvodData) {
       }
     });
 
-    revalidatePath('/admin/proizvodi');
+    revalidatePath('/proizvodi');
     revalidatePath('/proizvodi');
 
     return {
@@ -171,7 +171,7 @@ export async function updateProizvod(data: UpdateProizvodData) {
       data: proizvodData
     });
 
-    revalidatePath('/admin/proizvodi');
+    revalidatePath('/proizvodi');
     revalidatePath('/proizvodi');
     revalidatePath(`/proizvodi/${id}`);
 
@@ -239,7 +239,7 @@ export async function deleteProizvod(id: string) {
       });
     });
 
-    revalidatePath('/admin/proizvodi');
+    revalidatePath('/proizvodi');
     revalidatePath('/proizvodi');
 
     return {
@@ -262,7 +262,7 @@ export async function updateProizvodStanje(id: string, kolicina: number) {
       data: { kolicina }
     });
 
-    revalidatePath('/admin/proizvodi');
+    revalidatePath('/proizvodi');
     revalidatePath('/proizvodi');
     revalidatePath(`/proizvodi/${id}`);
 

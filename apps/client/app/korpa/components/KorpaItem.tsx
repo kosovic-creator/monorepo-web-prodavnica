@@ -77,10 +77,6 @@ export default function KorpaItem({ stavka, onUpdate }: KorpaItemProps) {
           alt={stavka.proizvod.naziv_sr}
           fill
           className="object-cover rounded-lg"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.src = '/placeholder.png';
-          }}
         />
       </div>
 
