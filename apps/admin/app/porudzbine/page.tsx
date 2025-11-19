@@ -273,7 +273,7 @@ const PorudzbinePage = () => {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
-                        <div className="flex-shrink-0 h-8 w-8">
+                        <div className="shrink-0 h-8 w-8">
                           <div className="h-8 w-8 rounded-full bg-gradient-to-r from-blue-400 to-purple-600 flex items-center justify-center">
                             <span className="text-xs font-medium text-white">
                               {porudzbina.korisnik?.ime ? porudzbina.korisnik.ime.charAt(0).toUpperCase() : 'N'}

@@ -76,11 +76,9 @@ export async function getPorudzbineKorisnika(korisnikId: string, page: number = 
 
     const skip = (page - 1) * pageSize;
 
-    const korisnikIdNum = Number(korisnikId);
-
     const [porudzbine, total] = await Promise.all([
       prisma.porudzbina.findMany({
-        where: { korisnikId: korisnikIdNum },
+        where: { korisnikId },
         skip,
         take: pageSize,
         orderBy: { kreiran: 'desc' },
@@ -100,7 +98,7 @@ export async function getPorudzbineKorisnika(korisnikId: string, page: number = 
           }
         }
       }),
-      prisma.porudzbina.count({ where: { korisnikId: korisnikIdNum } })
+      prisma.porudzbina.count({ where: { korisnikId } })
     ]);
 
     return {
@@ -119,7 +117,7 @@ export async function getPorudzbineKorisnika(korisnikId: string, page: number = 
 export async function getPorudzbinuById(id: string) {
   try {
     const porudzbina = await prisma.porudzbina.findUnique({
-      where: { id: Number(id) },
+      where: { id },
       include: {
         korisnik: {
           select: {
@@ -179,14 +177,12 @@ export async function kreirajPorudzbinu(data: KreirajPorudzbinuData) {
       };
     }
 
-    const korisnikIdNum = Number(korisnikId);
-
     // Create order with order items in transaction
     const porudzbina = await prisma.$transaction(async (tx) => {
       // Create the order
       const novaPorudzbina = await tx.porudzbina.create({
         data: {
-          korisnikId: korisnikIdNum,
+          korisnikId,
           ukupno,
           status,
           email
@@ -199,7 +195,7 @@ export async function kreirajPorudzbinu(data: KreirajPorudzbinuData) {
           tx.stavkaPorudzbine.create({
             data: {
               porudzbinaId: novaPorudzbina.id,
-              proizvodId: Number(stavka.proizvodId),
+              proizvodId: stavka.proizvodId,
               kolicina: stavka.kolicina,
               cena: stavka.cena,
               opis: stavka.opis,
@@ -238,7 +234,7 @@ export async function updateStatusPorudzbine(id: string, status: string) {
     }
 
     const porudzbina = await prisma.porudzbina.update({
-      where: { id: Number(id) },
+      where: { id },
       data: { status }
     });
 
@@ -271,7 +267,7 @@ export async function deletePorudzbinu(id: string) {
 
     // Check if order exists
     const existingPorudzbina = await prisma.porudzbina.findUnique({
-      where: { id: Number(id) }
+      where: { id }
     });
 
     if (!existingPorudzbina) {
@@ -283,7 +279,7 @@ export async function deletePorudzbinu(id: string) {
 
     // Delete order (order items will be deleted automatically due to cascade)
     await prisma.porudzbina.delete({
-      where: { id: Number(id) }
+      where: { id }
     });
 
     revalidatePath('/admin/porudzbine');

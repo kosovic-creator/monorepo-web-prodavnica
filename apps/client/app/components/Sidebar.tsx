@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { FaBoxOpen, FaUser, FaTimes, FaShoppingBag, FaChartBar, FaCog, FaPhone, FaInfoCircle } from 'react-icons/fa';
 import { useSession } from 'next-auth/react';
-import '@/i18n/config';
+
 
 interface SidebarProps {
   open: boolean;
@@ -36,14 +36,6 @@ function SidebarContent({ open, onClose }: SidebarProps) {
     return pathname === path;
   };
 
-  // Admin menu items
-  const adminMenuItems = React.useMemo(() => [
-    { path: '/admin', icon: FaChartBar, label: t('dashboard'), emoji: '📊' },
-    { path: '/admin/proizvodi', icon: FaBoxOpen, label: t('proizvodi'), emoji: '📦' },
-    { path: '/admin/korisnici', icon: FaUser, label: t('korisnici'), emoji: '👥' },
-    { path: '/admin/narudzbine', icon: FaShoppingBag, label: t('narudzbine'), emoji: '🛍️' },
-    { path: '/admin/postavke', icon: FaCog, label: t('postavke'), emoji: '⚙️' },
-  ], [t]);
 
   // User menu items
   const userMenuItems = React.useMemo(() => [
@@ -74,7 +66,7 @@ function SidebarContent({ open, onClose }: SidebarProps) {
         flex flex-col
       `}>
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-gray-200 flex-shrink-0">
+        <div className="flex items-center justify-between p-4 border-b border-gray-200 shrink-0">
           <div className="flex items-center gap-2">
             <span className="text-2xl">🛒</span>
             <h2 className="font-bold text-blue-700 text-lg">
@@ -92,7 +84,7 @@ function SidebarContent({ open, onClose }: SidebarProps) {
 
         {/* User Info */}
         {session?.user && (
-          <div className="p-4 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-purple-50 flex-shrink-0">
+          <div className="p-4 border-b border-gray-100 bg-linear-to-r from-blue-50 to-purple-50 shrink-0">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">
                 {session.user.name?.charAt(0).toUpperCase() || 'U'}
@@ -139,7 +131,7 @@ function SidebarContent({ open, onClose }: SidebarProps) {
         </nav>
 
         {/* Footer - flex-shrink-0 da ostane na dnu */}
-        <div className="p-4 border-t border-gray-200 bg-gray-50 flex-shrink-0">
+        <div className="p-4 border-t border-gray-200 bg-gray-50 shrink-0">
           <div className="text-center">
             <p className="text-xs text-gray-500">{t('web_trgovina')}</p>
             <p className="text-xs text-gray-400">v1.0.0</p>
@@ -159,9 +151,10 @@ function SidebarContent({ open, onClose }: SidebarProps) {
 }
 
 // Glavna Sidebar komponenta sa Suspense
+import Skeleton from './Skeleton';
 export default function Sidebar({ open, onClose }: SidebarProps) {
   return (
-    <Suspense fallback={<div className="p-4 text-center">Loading sidebar...</div>}>
+    <Suspense fallback={<Skeleton className="h-8 w-full" />}>
       <SidebarContent open={open} onClose={onClose} />
     </Suspense>
   );

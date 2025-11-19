@@ -54,14 +54,15 @@ export default function EditProfilPage() {
   useEffect(() => {
     if (status === 'loading') return;
 
-    if (!session?.user?.id) {
+    const userId = session?.user?.id;
+    if (!userId) {
       router.push('/auth/prijava');
       return;
     }
 
     const loadKorisnik = async () => {
       try {
-        const result = await getKorisnikById(Number(session.user.id));
+        const result = await getKorisnikById(userId);
 
         if (!result.success || !result.data) {
           toast.error('Greška pri učitavanju profila');
@@ -131,7 +132,12 @@ export default function EditProfilPage() {
 
     startTransition(async () => {
       try {
-        const userId = Number(session.user.id);
+        const userId = session?.user?.id;
+        if (!userId) {
+          toast.error('Niste prijavljeni');
+          router.push('/auth/prijava');
+          return;
+        }
 
         const korisnikResult = await updateProfilKorisnika(userId, {
           ime: form.ime,
@@ -147,7 +153,7 @@ export default function EditProfilPage() {
 
         let podaciResult;
         if (form.podaciId) {
-          podaciResult = await updatePodaciPreuzimanja(String(userId), {
+          podaciResult = await updatePodaciPreuzimanja(userId, {
             adresa: form.adresa,
             drzava: form.drzava,
             grad: form.grad,
@@ -155,7 +161,7 @@ export default function EditProfilPage() {
             telefon: form.telefon,
           });
         } else {
-          podaciResult = await createPodaciPreuzimanja(String(userId), {
+          podaciResult = await createPodaciPreuzimanja(userId, {
             adresa: form.adresa,
             drzava: form.drzava,
             grad: form.grad,

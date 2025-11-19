@@ -18,7 +18,7 @@ export default function DeleteButton({ korisnikId, korisnikIme }: DeleteButtonPr
   const handleDelete = async () => {
     startTransition(async () => {
       try {
-        const result = await deleteKorisnik(Number(korisnikId));
+        const result = await deleteKorisnik(korisnikId);
 
         if (result.success) {
           toast.success(result.message || 'Korisnik je uspešno obrisan');

@@ -123,8 +123,8 @@ function IzmeniProizvodContent() {
       karakteristike_en: form.karakteristike_en,
       kategorija_sr: form.kategorija_sr,
       kategorija_en: form.kategorija_en,
-      cena: Number(form.cena),
-      kolicina: Number(form.kolicina),
+      cena: typeof form.cena === 'string' ? parseFloat(form.cena) : form.cena,
+      kolicina: typeof form.kolicina === 'string' ? parseInt(form.kolicina, 10) : form.kolicina,
       slike: form.slike || [],
       id: form.id,
     });
@@ -150,8 +150,8 @@ function IzmeniProizvodContent() {
           karakteristike_en: form.karakteristike_en,
           kategorija_sr: form.kategorija_sr || '',
           kategorija_en: form.kategorija_en || '',
-          cena: Number(form.cena),
-          kolicina: Number(form.kolicina),
+          cena: typeof form.cena === 'string' ? parseFloat(form.cena) : form.cena,
+          kolicina: typeof form.kolicina === 'string' ? parseInt(form.kolicina, 10) : form.kolicina,
           slike: form.slike || [],
         });
 
@@ -176,9 +176,7 @@ function IzmeniProizvodContent() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-      </div>
+      <Skeleton className="h-12 w-full" />
     );
   }
 
@@ -379,11 +377,7 @@ function IzmeniProizvodContent() {
 
 function IzmeniProizvodPage() {
   return (
-    <Suspense fallback={
-      <div className="flex items-center justify-center min-h-[400px]">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-      </div>
-    }>
+    <Suspense fallback={<Skeleton className="h-12 w-full" />}>
       <IzmeniProizvodContent />
     </Suspense>
   );

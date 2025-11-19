@@ -93,8 +93,8 @@ function DodajProizvodPage() {
 
         // Pripremi payload za backend
         const payload = {
-            cena: Number(form.cena),
-            kolicina: Number(form.kolicina),
+            cena: typeof form.cena === 'string' ? parseFloat(form.cena) : form.cena,
+            kolicina: typeof form.kolicina === 'string' ? parseInt(form.kolicina, 10) : form.kolicina,
             slike: form.slike,
             naziv_sr: formTranslations.naziv_sr || '',
             opis_sr: formTranslations.opis_sr || '',

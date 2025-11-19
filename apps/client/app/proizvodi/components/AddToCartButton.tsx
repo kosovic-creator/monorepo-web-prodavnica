@@ -16,11 +16,11 @@ declare module 'next-auth' {
 import { useRouter } from 'next/navigation';
 import { FaCartPlus } from 'react-icons/fa';
 import toast from 'react-hot-toast';
-import { ProizvodServerAction } from '@types';
+import { Proizvod } from '@types';
 import { dodajUKorpu, getKorpa } from '@actions/korpa';
 
 interface AddToCartButtonProps {
-  proizvod: ProizvodServerAction;
+  proizvod: Proizvod;
 }
 
 export default function AddToCartButton({ proizvod }: AddToCartButtonProps) {
@@ -44,8 +44,8 @@ export default function AddToCartButton({ proizvod }: AddToCartButtonProps) {
     startTransition(async () => {
       try {
         const result = await dodajUKorpu({
-          korisnikId: Number(korisnikId),
-          proizvodId: Number(proizvod.id),
+          korisnikId,
+          proizvodId: proizvod.id,
           kolicina: 1
         });
 

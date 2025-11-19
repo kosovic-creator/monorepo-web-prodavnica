@@ -8,13 +8,13 @@ import { useTranslation } from 'react-i18next';
 import { getOmiljeni, dodajUOmiljene, ukloniIzOmiljenih } from '@actions/omiljeni';
 
 interface OmiljeniButtonProps {
-  proizvodId: number | string;
+  proizvodId: string;
 }
 
 interface Omiljeni {
-  id: number | string;
-  proizvodId: number | string;
-  korisnikId: number | string;
+  id: string;
+  proizvodId: string;
+  korisnikId: string;
 }
 
 export default function OmiljeniButton({ proizvodId }: OmiljeniButtonProps) {

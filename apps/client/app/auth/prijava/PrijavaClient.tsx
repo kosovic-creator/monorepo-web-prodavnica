@@ -1,5 +1,4 @@
 'use client';
-import '../../../../client/i18n/config';
 import { signIn } from "next-auth/react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -109,7 +108,7 @@ export default function PrijavaClient({ lang }: PrijavaClientProps) {
         const sessionRes = await fetch("/api/auth/session");
         const session = await sessionRes.json();
         if (session?.user?.uloga === "admin") {
-          router.push("/korisnici");
+          router.push("/admin");
         } else {
           router.push("/");
         }

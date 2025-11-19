@@ -22,9 +22,8 @@ export default function ProizvodClient({ proizvod, lang }: { proizvod: any, lang
   const kategorija = lang === 'en' ? proizvod.kategorija_en : proizvod.kategorija_sr;
 
   const handleDodajUKorpu = async () => {
-    const korisnikIdStr = session?.user?.id;
-    const korisnikId = korisnikIdStr ? Number(korisnikIdStr) : undefined;
-    if (!korisnikId || isNaN(korisnikId)) {
+    const korisnikId = session?.user?.id;
+    if (!korisnikId) {
       toast.error(
         <span>
           Morate biti prijavljeni za dodavanje u korpu!{' '}
@@ -42,7 +41,7 @@ export default function ProizvodClient({ proizvod, lang }: { proizvod: any, lang
           toast.error(result.error || 'Greška pri dodavanju u korpu');
           return;
         }
-        const korpaResult = await getKorpa(korisnikId.toString());
+        const korpaResult = await getKorpa(korisnikId);
         if (korpaResult.success && korpaResult.data) {
           const broj = korpaResult.data.stavke.reduce((acc: number, s: { kolicina: number }) => acc + s.kolicina, 0);
           localStorage.setItem('brojUKorpi', broj.toString());

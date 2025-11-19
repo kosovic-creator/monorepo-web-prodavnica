@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 import Link from "next/link";
-import i18n from "apps/client/i18n/config";
+import i18n from "../../i18n/config";
 import { useSearch } from "./SearchContext";
 import { useKorpa } from "./KorpaContext";
 
@@ -187,7 +187,7 @@ function NavbarContent({ setSidebarOpen }: NavbarProps) {
                         const lang = params.get('lang') || currentLanguage;
                         router.push(`/proizvodi?lang=${lang}`);
                       }}
-                      className="text-gray-400 hover:text-red-600 w-8 h-8 rounded-full hover:bg-gray-100 transition-colors flex items-center justify-center text-lg font-bold flex-shrink-0"
+                    className="text-gray-400 hover:text-red-600 w-8 h-8 rounded-full hover:bg-gray-100 transition-colors flex items-center justify-center text-lg font-bold shrink-0"
                       title="Obriši pretragu"
                     >
                       ×
@@ -217,7 +217,7 @@ function NavbarContent({ setSidebarOpen }: NavbarProps) {
               {session?.user && (
                 <button
                   onClick={() => navigateWithLang('/korpa')}
-                  className="relative flex items-center justify-center p-2 sm:p-3 rounded-lg hover:bg-blue-50 transition touch-manipulation min-w-[44px] min-h-[44px]"
+                className="relative flex items-center justify-center p-2 sm:p-3 rounded-lg hover:bg-blue-50 transition touch-manipulation min-w-11 min-h-11"
                 >
                   <FaShoppingCart className="text-blue-600 w-4 h-4 sm:w-5 sm:h-5" />
                   {brojUKorpi > 0 && (
@@ -233,7 +233,7 @@ function NavbarContent({ setSidebarOpen }: NavbarProps) {
               {!session?.user ? (
                 <button
                   onClick={() => navigateWithLang('/auth/prijava')}
-                  className="flex items-center justify-center p-2 sm:p-3 rounded-lg hover:bg-blue-50 transition touch-manipulation min-w-[44px] min-h-[44px]"
+                className="flex items-center justify-center p-2 sm:p-3 rounded-lg hover:bg-blue-50 transition touch-manipulation min-w-11 min-h-11"
                 >
                   <FaSignInAlt className="text-blue-600 w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
@@ -243,7 +243,7 @@ function NavbarContent({ setSidebarOpen }: NavbarProps) {
                     <div className="relative user-dropdown">
                       <button
                         onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                        className="flex items-center justify-center p-2 sm:p-3 rounded-lg hover:bg-blue-50 transition touch-manipulation min-w-[44px] min-h-[44px]"
+                      className="flex items-center justify-center p-2 sm:p-3 rounded-lg hover:bg-blue-50 transition touch-manipulation min-w-11 min-h-11"
                       >
                         <FaUser className="text-blue-600 w-4 h-4 sm:w-5 sm:h-5" />
                       </button>
@@ -309,7 +309,7 @@ function NavbarContent({ setSidebarOpen }: NavbarProps) {
               <div className="relative language-dropdown">
                 <button
                   onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
-                  className="flex items-center gap-1 sm:gap-2 p-2 sm:p-3 rounded-lg hover:bg-gray-100 transition-colors focus:outline-none touch-manipulation min-w-[44px] min-h-[44px]"
+                  className="flex items-center gap-1 sm:gap-2 p-2 sm:p-3 rounded-lg hover:bg-gray-100 transition-colors focus:outline-none touch-manipulation min-w-11 min-h-11"
                 >
                   <span className="text-lg sm:text-xl">{getLanguageFlag(currentLanguage)}</span>
                   <span className="hidden md:inline text-xs sm:text-sm font-medium">{getLanguageName(currentLanguage)}</span>
@@ -362,7 +362,7 @@ function NavbarContent({ setSidebarOpen }: NavbarProps) {
                     setLocalSearch('');
                     setSearchTerm('');
                   }}
-                  className="text-gray-400 hover:text-red-600 w-8 h-8 rounded-full hover:bg-gray-100 transition-colors flex items-center justify-center text-lg font-bold flex-shrink-0"
+                  className="text-gray-400 hover:text-red-600 w-8 h-8 rounded-full hover:bg-gray-100 transition-colors flex items-center justify-center text-lg font-bold shrink-0"
                   title="Obriši pretragu"
                 >
                   ×
@@ -384,9 +384,10 @@ function NavbarContent({ setSidebarOpen }: NavbarProps) {
 }
 
 // Glavna Navbar komponenta sa Suspense
+import Skeleton from './Skeleton';
 export default function Navbar({ setSidebarOpen }: NavbarProps) {
   return (
-    <Suspense fallback={<div className="p-4 text-center">Loading...</div>}>
+    <Suspense fallback={<Skeleton className="h-8 w-full" />}>
       <NavbarContent setSidebarOpen={setSidebarOpen} />
     </Suspense>
   );

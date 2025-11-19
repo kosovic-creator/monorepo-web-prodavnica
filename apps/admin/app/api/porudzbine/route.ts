@@ -5,14 +5,14 @@ import { prisma } from '../../../../../prisma/client';
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const page = Number(searchParams.get('page')) || 1;
-  let pageSize = Number(searchParams.get('pageSize')) || 10;
+  const page = parseInt(searchParams.get('page') || '1', 10);
+  let pageSize = parseInt(searchParams.get('pageSize') || '10', 10);
   const korisnikId = searchParams.get('korisnikId'); // Filtriranje po korisniku
   pageSize = Math.max(pageSize, 10);
   const skip = (page - 1) * pageSize;
 
   // Kreiraj where uslov za filtriranje
-  const whereClause = korisnikId ? { korisnikId: Number(korisnikId) } : {};
+  const whereClause = korisnikId ? { korisnikId } : {};
   const [porudzbine, total] = await Promise.all([
     prisma.porudzbina.findMany({
       where: whereClause,
@@ -69,12 +69,12 @@ export async function POST(req: Request) {
     // Kreiraj stavke porudžbine i smanji količinu proizvoda
     if (stavke && Array.isArray(stavke)) {
       interface StavkaInput {
-        proizvodId: number;
+        proizvodId: string;
         kolicina: number;
       }
 
       interface Proizvod {
-        id: number;
+        id: string;
         cena: number;
         slika?: string | null;
         kolicina: number;
@@ -90,29 +90,28 @@ export async function POST(req: Request) {
           throw new Error(`Proizvod sa ID ${s.proizvodId} nije pronađen.`);
         }
 
-          const stavkaData = {
-            kolicina: s.kolicina,
-            cena: proizvod.cena, // Cena u vreme kupovine
-            slika: proizvod.slika || null, // Slika u vreme kupovine
-            opis: new Date().toLocaleDateString(),
-            porudzbina: {
-              connect: { id: novaPorudzbina.id }
-            },
-            proizvod: {
-              connect: { id: s.proizvodId }
-            }
-          };
+        const stavkaData = {
+          kolicina: s.kolicina,
+          cena: proizvod.cena, // Cena u vreme kupovine
+          slika: proizvod.slika || null, // Slika u vreme kupovine
+          opis: new Date().toLocaleDateString(),
+          porudzbina: {
+            connect: { id: novaPorudzbina.id }
+          },
+          proizvod: {
+            connect: { id: s.proizvodId }
+          }
+        };
 
-          await tx.stavkaPorudzbine.create({
-            data: stavkaData,
-          });
+        await tx.stavkaPorudzbine.create({
+          data: stavkaData,
+        });
 
-          // Smanji količinu proizvoda
-          await tx.proizvod.update({
-            where: { id: s.proizvodId },
-            data: { kolicina: { decrement: s.kolicina } },
-          });
-        // }
+        // Smanji količinu proizvoda
+        await tx.proizvod.update({
+          where: { id: s.proizvodId },
+          data: { kolicina: { decrement: s.kolicina } },
+        });
       }
     }
 

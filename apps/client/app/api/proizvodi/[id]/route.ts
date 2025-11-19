@@ -4,14 +4,12 @@ import { prisma } from '../../../../../../prisma/client';
 export async function GET(req: Request) {
   const url = new URL(req.url);
   const id = url.pathname.split('/').pop();
-  const idNum = Number(id);
-
-  if (!id || isNaN(idNum)) {
-    return NextResponse.json({ error: 'ID je obavezan i mora biti broj.' }, { status: 400 });
+  if (!id) {
+    return NextResponse.json({ error: 'ID je obavezan.' }, { status: 400 });
   }
 
   const proizvod = await prisma.proizvod.findUnique({
-    where: { id: idNum },
+    where: { id },
     select: {
       id: true,
       cena: true,
@@ -56,15 +54,13 @@ export async function DELETE(req: Request) {
   try {
     const url = new URL(req.url);
     const id = url.pathname.split('/').pop();
-    const idNum = Number(id);
-
-    if (!id || isNaN(idNum)) {
-      return NextResponse.json({ error: 'ID je obavezan i mora biti broj.' }, { status: 400 });
+    if (!id) {
+      return NextResponse.json({ error: 'ID je obavezan.' }, { status: 400 });
     }
 
     // First check if product exists
     const existingProizvod = await prisma.proizvod.findUnique({
-      where: { id: idNum }
+      where: { id }
     });
 
     if (!existingProizvod) {
@@ -73,13 +69,13 @@ export async function DELETE(req: Request) {
 
     // Direktno briši proizvod
     await prisma.proizvod.delete({
-      where: { id: idNum }
+      where: { id }
     });
 
     return NextResponse.json({
       success: true,
       message: 'Proizvod je uspešno obrisan',
-      id: idNum
+      id
     });
   } catch (error) {
     console.error('Error deleting proizvod:', error);

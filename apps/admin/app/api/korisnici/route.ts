@@ -3,8 +3,8 @@ import { prisma } from '../../../../../prisma/client';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const page = Number(searchParams.get('page') || '1');
-  let pageSize = Number(searchParams.get('pageSize') || '10');
+  const page = parseInt(searchParams.get('page') || '1', 10);
+  let pageSize = parseInt(searchParams.get('pageSize') || '10', 10);
   pageSize = Math.max(pageSize, 10);
   const skip = (page - 1) * pageSize;
   const [korisnici, total] = await Promise.all([

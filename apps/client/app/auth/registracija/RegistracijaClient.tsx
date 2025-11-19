@@ -1,11 +1,11 @@
 "use client";
 import { useState, useTransition } from "react";
-
+import '@/i18n/config';
 import { useTranslation } from 'react-i18next';
 import { FaUserPlus, FaEnvelope, FaLock, FaUser } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from 'react-hot-toast';
-import { registrujKorisnika } from "@actions/korisnici";
+import { registrujKorisnika } from '@actions/korisnici';
 
 interface RegistracijaClientProps {
   lang: string;

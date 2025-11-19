@@ -2,7 +2,23 @@ export const dynamic = 'force-dynamic';
 import { getKorisnici } from "@actions/korisnici";
 import DeleteButton from './DeleteButton';
 import { Suspense } from 'react';
-import {  Korisnik } from "@types";
+import Skeleton from '../components/Skeleton';
+import { Korisnik as BaseKorisnik } from "@types";
+
+// Extend Korisnik type to include podaciPreuzimanja
+type PodaciPreuzimanja = {
+  id: string;
+  korisnikId: string;
+  adresa?: string;
+  grad?: string;
+  drzava?: string;
+  telefon?: string;
+  // Add other fields as needed
+};
+
+type Korisnik = BaseKorisnik & {
+  podaciPreuzimanja?: PodaciPreuzimanja | null;
+};
 
 async function KorisniciTable({ page = 1, pageSize = 10 }: { page?: number, pageSize?: number }) {
   const result = await getKorisnici(page, pageSize);
@@ -39,7 +55,7 @@ async function KorisniciTable({ page = 1, pageSize = 10 }: { page?: number, page
     <>
       {/* DEBUG: Prikazi raw rezultat iz backenda */}
 
-      
+
       {/* Korisnici tabela */}
       <div className="bg-white rounded-lg shadow overflow-hidden">
         <div className="overflow-x-auto">
@@ -144,9 +160,7 @@ export default async function AdminKorisniciPage() {
       </div>
 
       <Suspense fallback={
-        <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500"></div>
-        </div>
+        <Skeleton className="h-16 w-full" />
       }>
         <KorisniciTable />
       </Suspense>

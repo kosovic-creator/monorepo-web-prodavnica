@@ -4,8 +4,8 @@ import { prisma } from '../../prisma/client';
 import { revalidatePath } from 'next/cache';
 
 export type DodajUKorpuData = {
-  korisnikId: number;
-  proizvodId: number;
+  korisnikId: string;
+  proizvodId: string;
   kolicina?: number;
 };
 
@@ -22,7 +22,7 @@ export async function dodajUKorpu(data: DodajUKorpuData) {
 
     // Check if user exists
     const korisnik = await prisma.korisnik.findUnique({
-      where: { id: Number(korisnikId) }
+      where: { id: korisnikId }
     });
 
     if (!korisnik) {
@@ -34,7 +34,7 @@ export async function dodajUKorpu(data: DodajUKorpuData) {
 
     // Check if item already exists in cart
     const existing = await prisma.stavkaKorpe.findUnique({
-      where: { korisnikId_proizvodId: { korisnikId: Number(korisnikId), proizvodId: Number(proizvodId) } }
+      where: { korisnikId_proizvodId: { korisnikId, proizvodId } }
     });
 
     let stavka;
@@ -48,7 +48,7 @@ export async function dodajUKorpu(data: DodajUKorpuData) {
     } else {
       // Create new item
       stavka = await prisma.stavkaKorpe.create({
-        data: { korisnikId: Number(korisnikId), proizvodId: Number(proizvodId), kolicina }
+        data: { korisnikId, proizvodId, kolicina }
       });
     }
 
@@ -91,7 +91,7 @@ export async function getKorpa(korisnikId: string) {
     }
 
     const stavke = await prisma.stavkaKorpe.findMany({
-      where: { korisnikId: Number(korisnikId) },
+      where: { korisnikId },
       include: { proizvod: true },
       orderBy: { kreiran: 'desc' }
     });
@@ -119,7 +119,7 @@ export async function updateStavkuKorpe(id: string, kolicina: number) {
     }
 
     const stavka = await prisma.stavkaKorpe.update({
-      where: { id: Number(id) },
+      where: { id },
       data: { kolicina },
     });
 
@@ -148,7 +148,7 @@ export async function ukloniStavkuKorpe(id: string) {
     }
 
     const stavka = await prisma.stavkaKorpe.delete({
-      where: { id: Number(id) }
+      where: { id }
     });
 
     revalidatePath('/korpa');
@@ -176,7 +176,7 @@ export async function ocistiKorpu(korisnikId: string) {
     }
 
     await prisma.stavkaKorpe.deleteMany({
-      where: { korisnikId: Number(korisnikId) }
+      where: { korisnikId }
     });
 
     revalidatePath('/korpa');

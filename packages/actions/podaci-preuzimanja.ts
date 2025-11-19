@@ -21,7 +21,7 @@ export async function getPodaciPreuzimanja(korisnikId: string) {
     }
 
     const podaci = await prisma.podaciPreuzimanja.findUnique({
-      where: { korisnikId: Number(korisnikId) }
+      where: { korisnikId }
     });
 
     return {
@@ -48,7 +48,7 @@ export async function createPodaciPreuzimanja(korisnikId: string, data: PodaciPr
 
     // Check if delivery data already exists for this user
     const existing = await prisma.podaciPreuzimanja.findUnique({
-      where: { korisnikId: Number(korisnikId) }
+      where: { korisnikId }
     });
 
     if (existing) {
@@ -60,7 +60,7 @@ export async function createPodaciPreuzimanja(korisnikId: string, data: PodaciPr
 
     const podaci = await prisma.podaciPreuzimanja.create({
       data: {
-        korisnikId: Number(korisnikId),
+        korisnikId,
         ...data
       }
     });
@@ -93,7 +93,7 @@ export async function updatePodaciPreuzimanja(korisnikId: string, data: PodaciPr
 
     // Check if delivery data exists for this user
     const existing = await prisma.podaciPreuzimanja.findUnique({
-      where: { korisnikId: Number(korisnikId) }
+      where: { korisnikId }
     });
 
     let podaci;
@@ -101,14 +101,14 @@ export async function updatePodaciPreuzimanja(korisnikId: string, data: PodaciPr
     if (existing) {
       // Update existing data
       podaci = await prisma.podaciPreuzimanja.update({
-        where: { korisnikId: Number(korisnikId) },
+        where: { korisnikId },
         data
       });
     } else {
       // Create new data if doesn't exist
       podaci = await prisma.podaciPreuzimanja.create({
         data: {
-          korisnikId: Number(korisnikId),
+          korisnikId,
           ...data
         }
       });
@@ -142,7 +142,7 @@ export async function deletePodaciPreuzimanja(korisnikId: string) {
 
     // Check if delivery data exists for this user
     const existing = await prisma.podaciPreuzimanja.findUnique({
-      where: { korisnikId: Number(korisnikId) }
+      where: { korisnikId }
     });
 
     if (!existing) {
@@ -153,7 +153,7 @@ export async function deletePodaciPreuzimanja(korisnikId: string) {
     }
 
     await prisma.podaciPreuzimanja.delete({
-      where: { korisnikId: Number(korisnikId) }
+      where: { korisnikId }
     });
 
     revalidatePath('/podaci-preuzimanja');

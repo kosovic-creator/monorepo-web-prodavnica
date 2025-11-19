@@ -36,7 +36,7 @@ export default function DeleteButton({ userId }: DeleteButtonProps) {
     setIsDeleting(true);
     startTransition(async () => {
       try {
-        const result = await deleteKorisnik(Number(userId));
+        const result = await deleteKorisnik(userId);
 
         if (!result.success) {
           toast.error(result.error || t('greska_pri_cuvanju'));

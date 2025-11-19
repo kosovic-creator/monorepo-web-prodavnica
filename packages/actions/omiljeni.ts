@@ -13,7 +13,7 @@ export async function getOmiljeni(korisnikId: string) {
     }
 
     const omiljeni = await prisma.omiljeni.findMany({
-      where: { korisnikId: Number(korisnikId) },
+      where: { korisnikId },
       include: {
         proizvod: {
           select: {
@@ -101,7 +101,7 @@ export async function dodajUOmiljene(korisnikId: string, proizvodId: string) {
 
     // Check if already in favorites
     const existing = await prisma.omiljeni.findUnique({
-      where: { korisnikId_proizvodId: { korisnikId: Number(korisnikId), proizvodId: Number(proizvodId) } }
+      where: { korisnikId_proizvodId: { korisnikId, proizvodId } }
     });
 
     if (existing) {
@@ -112,7 +112,7 @@ export async function dodajUOmiljene(korisnikId: string, proizvodId: string) {
     }
 
     const omiljeni = await prisma.omiljeni.create({
-      data: { korisnikId: Number(korisnikId), proizvodId: Number(proizvodId) },
+      data: { korisnikId, proizvodId },
       include: {
         proizvod: {
           select: {
@@ -183,7 +183,7 @@ export async function ukloniIzOmiljenih(korisnikId: string, proizvodId: string) 
 
     // Check if exists in favorites
     const existing = await prisma.omiljeni.findUnique({
-      where: { korisnikId_proizvodId: { korisnikId: Number(korisnikId), proizvodId: Number(proizvodId) } }
+      where: { korisnikId_proizvodId: { korisnikId, proizvodId } }
     });
 
     if (!existing) {
@@ -194,7 +194,7 @@ export async function ukloniIzOmiljenih(korisnikId: string, proizvodId: string) 
     }
 
     await prisma.omiljeni.delete({
-      where: { korisnikId_proizvodId: { korisnikId: Number(korisnikId), proizvodId: Number(proizvodId) } }
+      where: { korisnikId_proizvodId: { korisnikId, proizvodId } }
     });
 
     revalidatePath('/omiljeni');
@@ -224,7 +224,7 @@ export async function provjeriDaLiJeOmiljenj(korisnikId: string, proizvodId: str
     }
 
     const omiljeni = await prisma.omiljeni.findUnique({
-      where: { korisnikId_proizvodId: { korisnikId: Number(korisnikId), proizvodId: Number(proizvodId) } }
+      where: { korisnikId_proizvodId: { korisnikId, proizvodId } }
     });
 
     return {

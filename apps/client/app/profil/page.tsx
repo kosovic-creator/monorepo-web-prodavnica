@@ -15,7 +15,7 @@ export default async function ProfilPage() {
     redirect('/auth/prijava');
   }
 
-  const result = await getKorisnikById(Number(session.user.id));
+  const result = await getKorisnikById(session.user.id);
 
   if (!result.success || !result.data) {
     return (
@@ -36,7 +36,7 @@ export default async function ProfilPage() {
     id: String(result.data.id),
     telefon: podaciPreuzimanja.telefon ?? '',
     grad: podaciPreuzimanja.grad ?? '',
-    postanskiBroj: Number(podaciPreuzimanja.postanskiBroj) || 0,
+    postanskiBroj: podaciPreuzimanja.postanskiBroj ? Number(podaciPreuzimanja.postanskiBroj) : 0,
     adresa: podaciPreuzimanja.adresa ?? '',
   };
 

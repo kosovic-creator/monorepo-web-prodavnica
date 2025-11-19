@@ -45,8 +45,8 @@ export type KorisnikData = {
 };
 
 export type UpdateKorisnikData = KorisnikData & {
-  id: number;
-  podaciPreuzimanjaId?: number;
+  id: string;
+  podaciPreuzimanjaId?: string;
 };
 
 export type RegistracijaData = {
@@ -89,7 +89,7 @@ export async function getKorisnici(page: number = 1, pageSize: number = 10) {
   }
 }
 
-export async function getKorisnikById(id: number) {
+export async function getKorisnikById(id: string) {
   try {
     const korisnik = await prisma.korisnik.findUnique({
       where: { id }
@@ -154,7 +154,7 @@ export async function createKorisnik(data: KorisnikData) {
   }
 }
 
-export async function updateProfilKorisnika(id: number, data: {
+export async function updateProfilKorisnika(id: string, data: {
   ime: string;
   prezime: string;
   email: string;
@@ -226,7 +226,7 @@ export async function updateKorisnik(data: UpdateKorisnikData) {
   }
 }
 
-export async function deleteKorisnik(id: number) {
+export async function deleteKorisnik(id: string) {
   try {
     if (!id) {
       return {

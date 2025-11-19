@@ -96,7 +96,7 @@ export async function getProizvodi(page: number = 1, pageSize: number = 10, sear
 export async function getProizvodById(id: string) {
   try {
     const proizvod = await prisma.proizvod.findUnique({
-      where: { id: Number(id) },
+      where: { id },
       select: {
         id: true,
         cena: true,
@@ -167,7 +167,7 @@ export async function updateProizvod(data: UpdateProizvodData) {
     const { id, ...proizvodData } = data;
 
     const proizvod = await prisma.proizvod.update({
-      where: { id: Number(id) },
+      where: { id },
       data: proizvodData
     });
 
@@ -199,7 +199,7 @@ export async function deleteProizvod(id: string) {
 
     // Check if product exists
     const existingProizvod = await prisma.proizvod.findUnique({
-      where: { id: Number(id) }
+      where: { id }
     });
 
     if (!existingProizvod) {
@@ -211,7 +211,7 @@ export async function deleteProizvod(id: string) {
 
     // Check if product is in any orders
     const stavkePorudzbineCount = await prisma.stavkaPorudzbine.count({
-      where: { proizvodId: Number(id) }
+      where: { proizvodId: id }
     });
 
     if (stavkePorudzbineCount > 0) {
@@ -225,17 +225,17 @@ export async function deleteProizvod(id: string) {
     await prisma.$transaction(async (tx) => {
       // Delete cart items
       await tx.stavkaKorpe.deleteMany({
-        where: { proizvodId: Number(id) }
+        where: { proizvodId: id }
       });
 
       // Delete favorites
       await tx.omiljeni.deleteMany({
-        where: { proizvodId: Number(id) }
+        where: { proizvodId: id }
       });
 
       // Finally delete the product
       await tx.proizvod.delete({
-        where: { id: Number(id) }
+        where: { id }
       });
     });
 
@@ -258,7 +258,7 @@ export async function deleteProizvod(id: string) {
 export async function updateProizvodStanje(id: string, kolicina: number) {
   try {
     const proizvod = await prisma.proizvod.update({
-      where: { id: Number(id) },
+      where: { id },
       data: { kolicina }
     });
 

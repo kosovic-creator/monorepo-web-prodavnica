@@ -12,14 +12,9 @@ export async function GET(
       return NextResponse.json({ error: 'ID porudžbine je obavezan.' }, { status: 400 });
     }
 
-    const numericId = Number(id);
-    if (isNaN(numericId)) {
-      return NextResponse.json({ error: 'ID porudžbine mora biti broj.' }, { status: 400 });
-    }
-
     // Dohvati porudžbinu sa stavkama
     const porudzbina = await prisma.porudzbina.findUnique({
-      where: { id: numericId },
+      where: { id },
       include: {
         stavkePorudzbine: {
           include: {

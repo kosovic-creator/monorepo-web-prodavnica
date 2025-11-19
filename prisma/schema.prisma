@@ -9,7 +9,7 @@ datasource db {
 }
 
 model Korisnik {
-  id          Int                 @id @default(autoincrement())
+  id          String              @id @default(uuid())
   email       String              @unique
   lozinka     String
   ime         String
@@ -24,8 +24,8 @@ model Korisnik {
 }
 
 model PodaciPreuzimanja {
-  id             Int       @id @default(autoincrement())
-  korisnikId     Int       @unique
+  id             String    @id @default(uuid())
+  korisnikId     String    @unique
   adresa         String
   drzava         String
   grad           String
@@ -38,9 +38,9 @@ model PodaciPreuzimanja {
 
 
 model StavkaKorpe {
-  id         Int      @id @default(autoincrement())
-  korisnikId Int
-  proizvodId Int
+  id         String   @id @default(uuid())
+  korisnikId String
+  proizvodId String
   kolicina   Int      @default(1)
   kreiran    DateTime @default(now())
   azuriran   DateTime @updatedAt
@@ -52,8 +52,8 @@ model StavkaKorpe {
 }
 
 model Porudzbina {
-  id               Int                @id @default(autoincrement())
-  korisnikId       Int
+  id               String             @id @default(uuid())
+  korisnikId       String
   ukupno           Float
   status           String
   email            String?
@@ -67,9 +67,9 @@ model Porudzbina {
 }
 
 model StavkaPorudzbine {
-  id           Int        @id @default(autoincrement())
-  porudzbinaId Int
-  proizvodId   Int
+  id           String     @id @default(uuid())
+  porudzbinaId String
+  proizvodId   String
   kolicina     Int
   cena         Float
   opis         String?
@@ -83,9 +83,9 @@ model StavkaPorudzbine {
 }
 
 model Omiljeni {
-  id         Int      @id @default(autoincrement())
-  korisnikId Int
-  proizvodId Int
+  id         String   @id @default(uuid())
+  korisnikId String
+  proizvodId String
   kreiran    DateTime @default(now())
   korisnik   Korisnik @relation(fields: [korisnikId], references: [id], onDelete: Cascade)
   proizvod   Proizvod @relation(fields: [proizvodId], references: [id], onDelete: Cascade)
@@ -96,7 +96,7 @@ model Omiljeni {
 }
 
 model Proizvod {
-  id               Int      @id @default(autoincrement())
+  id               String   @id @default(uuid())
   cena             Float
   slike            String[] // Polje za više slika
   kolicina         Int      @default(1)
