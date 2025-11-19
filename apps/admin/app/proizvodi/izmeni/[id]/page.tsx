@@ -158,7 +158,7 @@ function IzmeniProizvodContent() {
 
         if (result.success) {
           toast.success('Proizvod je uspešno ažuriran!');
-          router.push('/admin/proizvodi');
+          router.push('/proizvodi');
         } else {
           setError(result.error || 'Greška pri ažuriranju proizvoda!');
           toast.error(result.error || 'Greška pri ažuriranju proizvoda!');
@@ -172,7 +172,7 @@ function IzmeniProizvodContent() {
   };
 
   const handleCancel = () => {
-    router.push('/admin/proizvodi');
+    router.push('/proizvodi');
   };
 
   if (loading) {
@@ -338,12 +338,7 @@ function IzmeniProizvodContent() {
                 </button>
               </div>
             ))}
-            <ImageUpload
-              currentImage={''}
-              onImageChange={handleImageAdd}
-              onImageRemove={() => { }}
-              productId={id}
-            />
+            <ImageUpload onUploaded={handleImageAdd} />
           </div>
           <div className="text-sm text-gray-500">Možete dodati više slika. Prva slika će biti glavna.</div>
         </div>

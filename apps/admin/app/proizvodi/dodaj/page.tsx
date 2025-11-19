@@ -12,7 +12,13 @@ import Image from 'next/image';
 // Update the import path if the file is located elsewhere, e.g.:
 import { noviProizvodSchemaStatic } from '@schemas';
 import ImageUpload from '../../components/ImageUpload';
+
 // Or, if the file does not exist, create it at the correct path.
+
+export interface ImageUploadProps {
+    onUploaded: (imageUrl: string) => void;
+    // ...other props if any...
+}
 
 function DodajProizvodPage() {
     const router = useRouter();
@@ -82,7 +88,7 @@ function DodajProizvodPage() {
         });
         setError(null);
         setValidationErrors({});
-        // Vrati se na admin stranicu
+
         router.push('/proizvodi');
     };
 
@@ -367,12 +373,7 @@ function DodajProizvodPage() {
                                 </button>
                             </div>
                         ))}
-                        <ImageUpload
-                            currentImage={''}
-                            onImageChange={handleImageAdd}
-                            onImageRemove={() => { }}
-                            productId={`new-${Date.now()}`}
-                        />
+                        <ImageUpload onUploaded={handleImageAdd} />
                     </div>
                     <div className="text-sm text-gray-500">Možete dodati više slika. Prva slika će biti glavna.</div>
                 </div>

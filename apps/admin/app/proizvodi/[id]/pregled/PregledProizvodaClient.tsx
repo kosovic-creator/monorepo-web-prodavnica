@@ -108,7 +108,7 @@ export default function PregledProizvodaClient({ id }: PregledProizvodaClientPro
         <div className="text-center">
           <div className="text-red-600 text-lg mb-4">Proizvod nije pronađen</div>
           <Link
-            href="/admin/proizvodi"
+            href="/proizvodi"
             className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
           >
             Vrati se na listu
@@ -170,7 +170,7 @@ export default function PregledProizvodaClient({ id }: PregledProizvodaClientPro
           {/* Quick Actions */}
           <div className="flex gap-2 mt-4 lg:mt-0">
             <Link
-              href={`/admin/proizvodi/izmeni/${proizvod.id}`}
+              href={`/proizvodi/izmeni/${proizvod.id}`}
               className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
             >
               <FaEdit className="w-4 h-4" />
