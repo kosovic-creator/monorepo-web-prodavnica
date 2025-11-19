@@ -16,6 +16,7 @@ interface StavkaKorpe {
     naziv_en: string;
     cena: number;
     slika?: string | null;
+    slike?: string[];
   } | null;
 }
 
@@ -25,6 +26,19 @@ interface KorpaItemProps {
 }
 
 export default function KorpaItem({ stavka, onUpdate }: KorpaItemProps) {
+  // Odredi sigurnu URL vrednost za sliku
+  const slikaUrl = stavka.proizvod
+    ? (stavka.proizvod.slika && typeof stavka.proizvod.slika === 'string' && stavka.proizvod.slika.length > 0)
+      ? stavka.proizvod.slika
+      : (Array.isArray(stavka.proizvod.slike) && stavka.proizvod.slike[0])
+        ? stavka.proizvod.slike[0]
+        : '/placeholder.png'
+    : '/placeholder.png';
+  // DEBUG: Prikaz podataka o proizvodu u korpi
+  if (typeof window !== 'undefined') {
+    // eslint-disable-next-line no-console
+    console.log('KORPA PROIZVOD:', stavka.proizvod);
+  }
   const { t } = useTranslation('korpa');
   const [isPending, startTransition] = useTransition();
 
@@ -71,10 +85,10 @@ export default function KorpaItem({ stavka, onUpdate }: KorpaItemProps) {
 
   return (
     <div className="flex items-center gap-4 p-4 bg-white rounded-lg shadow-sm border">
-      <div className="w-20 h-20 relative flex-shrink-0">
+      <div className="w-20 h-20 relative shrink-0">
         <Image
-          src={stavka.proizvod.slika || '/placeholder.png'}
-          alt={stavka.proizvod.naziv_sr}
+          src={slikaUrl}
+          alt={stavka.proizvod?.naziv_sr || 'Proizvod'}
           fill
           className="object-cover rounded-lg"
         />

@@ -52,17 +52,15 @@ export default function ProizvodiClient({ proizvodi, total, page, pageSize, lang
                     <OmiljeniButton proizvodId={proizvod.id} />
                   </div> */}
 
-                  {(proizvod.slika || (Array.isArray(proizvod.slike) && proizvod.slike[0])) && (
-                    <div className="mb-3 flex justify-center">
-                      <Image
-                        src={proizvod.slika || proizvod.slike[0]}
-                        alt={naziv ?? ''}
-                        width={100}
-                        height={100}
-                        className="object-cover rounded-md"
-                      />
-                    </div>
-                  )}
+                  <div className="mb-3 flex justify-center">
+                    <Image
+                      src={proizvod.slika || (Array.isArray(proizvod.slike) && proizvod.slike[0]) || '/placeholder.png'}
+                      alt={naziv ?? ''}
+                      width={100}
+                      height={100}
+                      className="object-cover rounded-md"
+                    />
+                  </div>
 
                   <div className="flex-1 space-y-2">
                     <h3 className="font-semibold text-lg text-gray-900 line-clamp-2">{naziv}</h3>

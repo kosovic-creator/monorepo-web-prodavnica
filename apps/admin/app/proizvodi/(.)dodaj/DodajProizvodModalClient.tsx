@@ -223,12 +223,7 @@ export default function DodajProizvodModalClient() {
           {/* Image Upload */}
           <div className="mb-6">
             <h3 className="text-lg font-medium mb-4 text-gray-700">Slika proizvoda</h3>
-            <ImageUpload
-              currentImage={form.slika}
-              onImageChange={handleImageChange}
-              onImageRemove={handleImageRemove}
-              productId={`new-${Date.now()}`}
-            />
+            <ImageUpload onUploaded={handleImageChange} />
           </div>
 
           {/* Actions */}

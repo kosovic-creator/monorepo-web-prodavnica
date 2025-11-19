@@ -39,14 +39,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     if (process.env.NODE_ENV === 'development') {
-      // Save to local public/uploads
-      const uploadsDir = path.join(process.cwd(), 'public', 'uploads');
-      if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
-      const ext = path.extname(file.originalFilename || file.newFilename || '');
-      const filename = uuidv4() + ext;
-      const destPath = path.join(uploadsDir, filename);
-      fs.copyFileSync(file.filepath, destPath);
-      return res.status(200).json({ url: `/uploads/${filename}` });
+      // Save to local public/uploads (always in apps/client/public/uploads)
+      const uploadsDir = path.join(__dirname, '..', '..', 'public', 'uploads');
+      console.log('UPLOAD DEBUG: uploadsDir =', uploadsDir);
+      try {
+        if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
+        const ext = path.extname(file.originalFilename || file.newFilename || '');
+        const filename = uuidv4() + ext;
+        const destPath = path.join(uploadsDir, filename);
+        console.log('UPLOAD DEBUG: destPath =', destPath);
+        fs.copyFileSync(file.filepath, destPath);
+        console.log('UPLOAD DEBUG: file copied successfully');
+        return res.status(200).json({ url: `/uploads/${filename}` });
+      } catch (err) {
+        console.error('UPLOAD DEBUG: error during file copy', err);
+        return res.status(500).json({ error: 'Error saving file locally', details: String(err) });
+      }
     } else {
       // Upload to Cloudinary
       try {
