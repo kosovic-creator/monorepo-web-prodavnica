@@ -50,7 +50,7 @@ export default function ProizvodiClient({ proizvodi, total, page, pageSize, lang
 
                  <div className="absolute top-3 right-3 z-10">
                     <OmiljeniButton proizvodId={proizvod.id} />
-                  </div> 
+                  </div>
 
                   <div className="mb-3 flex justify-center">
                     <Image
