@@ -68,16 +68,14 @@ export default function KorpaClient({ lang }: KorpaClientProps) {
       if (result.success && result.data) {
         setStavke(result.data.stavke);
         const broj = result.data.stavke.reduce((acc: number, s: StavkaKorpe) => acc + s.kolicina, 0);
-        resetKorpa();
         localStorage.setItem('brojUKorpi', broj.toString());
-        window.dispatchEvent(new Event('korpaChanged'));
       }
     } catch (error) {
       console.error('Error refreshing korpa:', error);
     } finally {
       setIsRefreshing(false);
     }
-  }, [session?.user?.id, resetKorpa]);
+  }, [session?.user?.id]);
 
   if (status === 'loading' || loading) {
     return (
@@ -101,7 +99,7 @@ export default function KorpaClient({ lang }: KorpaClientProps) {
         <Toaster position="top-right" />
         <FaShoppingCart className="text-6xl text-gray-300 mb-4" />
         <h2 className="text-2xl font-semibold text-gray-600 mb-2">
-          {t('prazna_korpa') || 'Vaša korpa je prazna'}
+          {t('prazna') || 'Vaša korpa je prazna'}
         </h2>
         <p className="text-gray-500 mb-6">
           {t('dodajte_proizvode') || 'Dodajte proizvode u korpu da biste nastavili sa kupovinom'}
