@@ -8,6 +8,7 @@ import { FaSave, FaTimes } from 'react-icons/fa';
 import { getProizvodById, updateProizvod } from '@actions/proizvodi';
 import { toast } from 'react-hot-toast';
 import ImageUpload from 'apps/admin/app/components/ImageUpload';
+import Skeleton from 'apps/admin/app/components/Skeleton';
 export type Proizvod = {
   id: string;
   // API polja

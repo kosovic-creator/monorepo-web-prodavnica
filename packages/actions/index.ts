@@ -5,4 +5,6 @@
   export * from './porudzbine';
   export * from './korpa';
   export * from './omiljeni';
+  export * from './payment';
+  export * from './podaci-preuzimanja';
 

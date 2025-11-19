@@ -3,7 +3,6 @@
 import { signOut } from "next-auth/react";
 import { useEffect } from "react";
 import { FaSignOutAlt } from "react-icons/fa";
-import '@/i18n/config';
 import { useTranslation } from "react-i18next";
 
 export default function OdjavaPage() {
