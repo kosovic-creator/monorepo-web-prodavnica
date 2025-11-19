@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { FaBoxOpen, FaEye } from "react-icons/fa";
 import Link from 'next/link';
 import Image from 'next/image';
-// import OmiljeniButton from '@/components/OmiljeniButton';
+import OmiljeniButton from './components/OmiljeniButton';
 import AddToCartButton from './components/AddToCartButton';
 import PaginationControls from './components/PaginationControls';
 import SearchInfo from './components/SearchInfo';
@@ -47,10 +47,10 @@ export default function ProizvodiClient({ proizvodi, total, page, pageSize, lang
                   key={proizvod.id}
                   className="bg-white border border-gray-200 rounded-lg p-4 flex flex-col shadow-sm hover:shadow-md transition-shadow relative"
                 >
-                  {/* Omiljeni dugme u gornjem desnom uglu */}
-                  {/* <div className="absolute top-3 right-3 z-10">
+
+                 <div className="absolute top-3 right-3 z-10">
                     <OmiljeniButton proizvodId={proizvod.id} />
-                  </div> */}
+                  </div> 
 
                   <div className="mb-3 flex justify-center">
                     <Image
